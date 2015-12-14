@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson2Task1", "ConsoleAppl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training", "..\..\..\..\Documents\Visual Studio 2013\Projects\Training\Training\Training.csproj", "{6A1BDD53-77B2-419F-B235-BD3C3EF55484}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HomeTask", "HomeTask\HomeTask.csproj", "{0E38A744-4EC2-4FD8-B3A8-A48B138C88FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6A1BDD53-77B2-419F-B235-BD3C3EF55484}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A1BDD53-77B2-419F-B235-BD3C3EF55484}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A1BDD53-77B2-419F-B235-BD3C3EF55484}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E38A744-4EC2-4FD8-B3A8-A48B138C88FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E38A744-4EC2-4FD8-B3A8-A48B138C88FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E38A744-4EC2-4FD8-B3A8-A48B138C88FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E38A744-4EC2-4FD8-B3A8-A48B138C88FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
