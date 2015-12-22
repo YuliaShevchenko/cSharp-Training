@@ -49,7 +49,7 @@ namespace Task6
                         list.Add(payByTheHour);
                     }
                 }
-                catch (Exception)
+                catch (FormatException)
                 {
                     Console.WriteLine("Not correct data");
 
