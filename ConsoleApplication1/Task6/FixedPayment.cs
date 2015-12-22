@@ -10,9 +10,6 @@ namespace Task6
     {
         double monthPayment;
        
-       // private string salary;
-        
-
         public FixedPayment(int id, string name, double salary)
         {
             ID = id;

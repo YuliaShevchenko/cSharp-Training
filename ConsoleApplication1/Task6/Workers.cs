@@ -8,11 +8,8 @@ namespace Task6
 {
    abstract class Workers
     {
-       public int ID{get; set;}
-       public string Name { get; set; }
-       public string Type { get; set; }
-      
-      // public double Payment { get; set; }
+       public int ID;
+       public string Name;
        public abstract double MonthAvarageSalary();
     }
 }

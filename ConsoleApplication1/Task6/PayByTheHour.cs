@@ -10,7 +10,6 @@ namespace Task6
     {
         double hourPayment;
         
-
          public PayByTheHour(int id, string name, double salary)
         {
             ID = id;
