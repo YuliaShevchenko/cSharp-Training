@@ -1,0 +1,5 @@
+1,Ivan,month,2000
+2,John,hour,1000
+3,Masha,month,3000
+4,Dima,hour,4000
+5,Alex,month,1500
