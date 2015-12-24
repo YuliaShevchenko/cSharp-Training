@@ -11,27 +11,38 @@ namespace Task6
     {
         static void Main(string[] args)
         {
+            // Console.WriteLine("Please add user. Enter ID, Name, Pay Type (month or hour), Salary");
+            // string enteredData = Console.ReadLine();
+            // Worker newWorker = WorkerConverter.toWorker(enteredData);
+            // FileUtils.AddWorker(newWorker);
 
-            string filename = "C:/Users/Jul/Source/Repos/cSharp-Training/ConsoleApplication1/Task6/Workers.txt";
-            User.AddUser(filename);
-            List<Workers> listOfWorkers = ReadFromFile.GetWorkersFromFile(filename);
+            List<Worker> listOfWorkers = FileUtils.ReadAll();
 
-            Console.WriteLine("++++++  Unsorted list ++++++");
-            Sorting.showAll(listOfWorkers);
-            List<Workers> sortedList = Sorting.SortingBySalaryAndName(listOfWorkers);
-            Console.WriteLine("++++++  Sorted list ++++++");
-            Sorting.showAll(sortedList);
+            Console.WriteLine("++++++  Unsorted workers ++++++");
+            print(listOfWorkers);
+           
+            Console.WriteLine("++++++  Sorted workers ++++++");
+            List<Worker> sortedList = ListUtils.SortBySalaryAndName(listOfWorkers);
+            print(sortedList);
+
             Console.WriteLine("++++++  Top 5  ++++++");
-            List<Workers> top5 = Sorting.getTop5(sortedList);
-            Sorting.showAll(top5);
+            print(ListUtils.getTop5(sortedList));
+
             Console.WriteLine("++++++  Last 3  ++++++");
-            List<Workers> last3 = Sorting.getLast3(sortedList);
-            Sorting.showAll(last3);
+            print(ListUtils.getLast3(sortedList));
+
             Console.ReadKey();
+        }
 
-
+        public static void print(List<Worker> workers)
+        {
+            foreach (Worker worker in workers)
+            {
+                Console.WriteLine(worker.ID + " - " + worker.Name + " - " + worker.MonthAvarageSalary());
+            }
 
         }
+
     }
 }
 

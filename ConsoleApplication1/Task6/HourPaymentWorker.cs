@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task6
 {
-    class PayByTheHour : Workers
+    class HourPaymentWorker : Worker
     {
-        double hourPayment;
-        
-         public PayByTheHour(int id, string name, double salary)
+        public double hourPayment;
+
+        public HourPaymentWorker(int id, string name, double salary)
         {
             ID = id;
             Name = name;
@@ -19,8 +19,7 @@ namespace Task6
 
         public override double MonthAvarageSalary()
         {
-            double monthSalary = 20.8 * 8 * hourPayment;
-            return monthSalary;
+            return 20.8 * 8 * hourPayment;
         }
 
     }

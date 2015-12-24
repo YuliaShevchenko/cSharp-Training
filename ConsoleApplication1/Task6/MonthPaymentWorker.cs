@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Task6
 {
-    class FixedPayment : Workers
+    class MonthPaymentWorker : Worker
     {
-        double monthPayment;
+        public double monthPayment;
        
-        public FixedPayment(int id, string name, double salary)
+        public MonthPaymentWorker(int id, string name, double salary)
         {
             ID = id;
             Name = name;

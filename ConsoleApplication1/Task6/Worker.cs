@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Task6
 {
-   public abstract class Workers
+   public abstract class Worker
     {
        public int ID;
        public string Name;
