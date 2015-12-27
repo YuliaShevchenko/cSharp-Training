@@ -11,10 +11,10 @@ namespace Task6
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Please add user. Enter ID, Name, Pay Type (month or hour), Salary");
-            // string enteredData = Console.ReadLine();
-            // Worker newWorker = WorkerConverter.toWorker(enteredData);
-            // FileUtils.AddWorker(newWorker);
+            Console.WriteLine("Please add user. Enter ID, Name, Pay Type (month or hour), Salary");
+            string enteredData = Console.ReadLine();
+            Worker newWorker = WorkerConverter.toWorker(enteredData);
+            FileUtils.AddWorker(newWorker);
 
             List<Worker> listOfWorkers = FileUtils.ReadAll();
 

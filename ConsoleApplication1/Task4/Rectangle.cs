@@ -33,30 +33,30 @@ namespace Task4
             return convertedSquare;
         }
 
-        public override bool equalsTwoObjects(Figure figure)
-        {
-            if (figure is Rectangle)
-            {
-                Rectangle rectangle = (Rectangle)figure;
-                int xForVerification = rectangle.getX();
-                int yForVerification = rectangle.getY();
-                int sideAForVerification = rectangle.getSideA();
-                int sideBForVerification = rectangle.getSideB();
+        //public override bool equalsTwoObjects(Figure other)
+        //{
+        //    if (other is Rectangle)
+        //    {
+        //        Rectangle rectangle = (Rectangle)other;
+        //        int xForVerification = rectangle.getX();
+        //        int yForVerification = rectangle.getY();
+        //        int sideAForVerification = rectangle.getSideA();
+        //        int sideBForVerification = rectangle.getSideB();
 
-                if (xForVerification == x && yForVerification == y && sideAForVerification == sideA && sideBForVerification == sideB)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //        if (xForVerification == x && yForVerification == y && sideAForVerification == sideA && sideBForVerification == sideB)
+        //        {
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
         int getX()
         {
             return x;

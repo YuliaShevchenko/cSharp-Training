@@ -8,35 +8,26 @@ namespace Task6
 {
     class WorkerConverter
     {
-
-        public static String toString(Worker worker)
-        {
-            int id = worker.ID;
-            string name = worker.Name;
-            string type = "";
-            double salary = 0;
-
-            if (worker is HourPaymentWorker)
-            {
-                type = "hour";
-                salary = ((HourPaymentWorker)worker).hourPayment;
-            }
-            else if (worker is MonthPaymentWorker)
-            {
-                type = "month";
-                salary = ((MonthPaymentWorker)worker).monthPayment;
-            }
-
-            return id + "," + name + "," + type + "," + salary;
-        }
-
         public static Worker toWorker(String str)
         {
-            string[] parts = str.Split(',');
-            int id = Convert.ToInt32(parts[0]);
-            string name = parts[1];
-            string type = parts[2];
-            double salary = Convert.ToDouble(parts[3]);
+            string[] parts;
+            int id;
+            string name;
+            string type;
+            double salary;
+
+            try
+            {
+                parts = str.Split(',');
+                id = Convert.ToInt32(parts[0]);
+                name = parts[1];
+                type = parts[2];
+                salary = Convert.ToDouble(parts[3]);
+            }
+            catch
+            {
+                throw new FormatException ("Invalid string format");
+            }
 
             if (type == "month")
             {

@@ -9,12 +9,12 @@ namespace Task6
 {
     class FileUtils
     {
-        static string FILENAME = "C:/Users/Jul/Source/Repos/cSharp-Training/ConsoleApplication1/Task6/Workers.txt";
+       const string FILENAME = "C:/Users/Jul/Source/Repos/cSharp-Training/ConsoleApplication1/Task6/Workers.txt";
 
         public static void AddWorker(Worker worker)
         {
             StreamWriter file = new StreamWriter(FILENAME, true);
-            file.WriteLine(WorkerConverter.toString(worker));
+            file.WriteLine(worker.ToString());
             file.Close();
         }
 

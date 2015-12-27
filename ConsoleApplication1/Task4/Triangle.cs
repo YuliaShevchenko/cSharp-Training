@@ -28,29 +28,29 @@ namespace Task4
             return convertedSquare;
         }
 
-        public override bool equalsTwoObjects(Figure figure)
-        {
-            if (figure is Triangle)
-            {
-                Triangle triangle = (Triangle)figure;
-                int xForVerification = triangle.getX();
-                int yForVerification = triangle.getY();
-                int sideForVerification = triangle.getSide();
+        //public override bool equalsTwoObjects(Figure other)
+        //{
+        //    if (other is Triangle)
+        //    {
+        //        Triangle triangle = (Triangle)other;
+        //        int xForVerification = triangle.getX();
+        //        int yForVerification = triangle.getY();
+        //        int sideForVerification = triangle.getSide();
 
-                if (xForVerification == x && yForVerification == y && sideForVerification == side)
-                {
-                    return true;
-                }
-                else
-                {
-                    return false;
-                }
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //        if (xForVerification == x && yForVerification == y && sideForVerification == side)
+        //        {
+        //            return true;
+        //        }
+        //        else
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
         int getX()
         {
             return x;

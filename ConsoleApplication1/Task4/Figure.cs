@@ -6,23 +6,37 @@ using System.Threading.Tasks;
 
 namespace Task4
 {
-   abstract class Figure : Drawing
+    abstract class Figure : Drawing
     {
-      
-      protected int x;
-      protected int y;
-       
+        protected int x { get; set; }
+        protected int y { get; set; }
+        public abstract void showInConsole();
+        //public abstract bool equalsTwoObjects(Figure other);
+        public abstract double square();
 
-       public abstract void showInConsole();
-       
+        public override bool Equals(object other)
+        {
 
-       public abstract bool equalsTwoObjects(Figure figure);
+            
+            if (this == other)
+            {
+                return true;
+            }
+
+            if (other is Figure)
+            {
+                Figure otherFigura = (Figure) other;
+
+                if (this.x == otherFigura.x && this.y == otherFigura.y)
+                {
+                    return true;
+                }
+
+                return false;
+            }
 
 
-       public abstract double square();
-      
-
-       
-       
+            return false;
+        }
     }
 }

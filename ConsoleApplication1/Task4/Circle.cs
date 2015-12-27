@@ -32,42 +32,31 @@ namespace Task4
             return convertedSquare;
         }
 
-        public override bool equalsTwoObjects(Figure figure)
+        public override bool Equals(object other)
         {
-            if (figure is Circle)
-            {
-                Circle circle = (Circle)figure;
-                int xForVerification = circle.getX();
-                int yForVerification = circle.getY();
-                int radiusForVerification = circle.getRadius();
 
-                if (xForVerification == x && yForVerification == y && radiusForVerification == radius)
+            if (base.Equals(other))
+            {
+                if (other is Circle)
                 {
-                    return true;
+                    if (((Circle)other).getRadius() == this.radius)
+                    {
+                        return true;
+                    }
                 }
-                else {
-                    return false;
-                }
-            }
-            else
-            {
                 return false;
-            }
+            } 
 
+
+            return false;
         }
 
-        int getX()
-        {
-            return x;
-        }
-        int getY()
-        {
-            return y;
-        }
+
+
         int getRadius()
         {
             return radius;
         }
-       
+
     }
 }

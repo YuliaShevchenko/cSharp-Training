@@ -10,6 +10,7 @@ namespace Task4
     {
          void showInConsole();
          double square();
-         bool equalsTwoObjects(Figure figure);
+         //bool equalsTwoObjects(Figure other);
+        // bool Equals(Figure figure);
     }
 }

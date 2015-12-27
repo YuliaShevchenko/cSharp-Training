@@ -8,18 +8,14 @@ namespace Task6
 {
     class HourPaymentWorker : Worker
     {
-        public double hourPayment;
-
-        public HourPaymentWorker(int id, string name, double salary)
+        public HourPaymentWorker(int id, string name, double salary) : base (id, name, salary)
         {
-            ID = id;
-            Name = name;
-            hourPayment = salary;
+            TYPE = "hour";
         }
 
         public override double MonthAvarageSalary()
         {
-            return 20.8 * 8 * hourPayment;
+            return 20.8 * 8 * Salary;
         }
 
     }
