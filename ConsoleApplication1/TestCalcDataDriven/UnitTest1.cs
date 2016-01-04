@@ -11,49 +11,49 @@ namespace TestCalcDataDriven
     [TestClass]
     public class TestCalculator
     {
+
         private const string exeSourceFile = @"C:\Windows\System32\calc.exe";
         private const string filePath = @"C:\Users\Jul\Source\Repos\cSharp-Training\ConsoleApplication1\TestCalcDataDriven\Data.csv";
+        private static Application application;
 
         public TestContext TestContext { get; set; }
 
-        [TestMethod]
-       [DeploymentItem("calc.exe")]
-        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", filePath, "Data#csv", DataAccessMethod.Sequential)]
-        public void TestSumDataDriven()
+        [TestInitialize]
+        public void initialize()
         {
+            application = Application.Launch(exeSourceFile);
+        }
 
-
-            int num1 = System.Convert.ToInt32(TestContext.DataRow[0]);
-            int num2 = System.Convert.ToInt32(TestContext.DataRow[1]);
-            int expectedResult = System.Convert.ToInt32(TestContext.DataRow[2]);
-            int actualResult = TestCalculator.Logic(num1, num2);
-
-            Assert.AreEqual(expectedResult, actualResult);
-
-            Application application = Application.Launch(exeSourceFile);
-            Window window = application.GetWindow("Калькулятор");
-            window.WaitWhileBusy();
-       
-            Button button1 = window.Get<Button>(SearchCriteria.ByText(num1.ToString()));
-            button1.Click();
-            Button plusBtn = window.Get<Button>(SearchCriteria.ByAutomationId("93"));
-            plusBtn.Click();
-            Button button2 = window.Get<Button>(SearchCriteria.ByText(num2.ToString()));
-            button2.Click();
-            Button equalsBtn = window.Get<Button>(SearchCriteria.ByAutomationId("121"));
-            equalsBtn.Click();
-            window.WaitWhileBusy();
-            SearchCriteria searchCriteria = SearchCriteria.ByAutomationId("158");
-            Label display = window.Get<Label>(searchCriteria);
-            
-            Assert.AreEqual(expectedResult, display.Text);
-
+        [TestCleanup]
+        public void testCleanUp()
+        {
             application.Close();
         }
 
-        public static int Logic(int Num1, int Num2)
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", filePath, "Data#csv", DataAccessMethod.Sequential)]
+        public void AdditionDataDrivenTest()
         {
-            return Num1 + Num2;
+            int num1 = System.Convert.ToInt32(TestContext.DataRow[0]);
+            int num2 = System.Convert.ToInt32(TestContext.DataRow[1]);
+            int expectedResult = System.Convert.ToInt32(TestContext.DataRow[2]);
+            TestCalculator.CalculatorAddition(num1, num2, expectedResult);
         }
+
+        //click on buttons with digits, plus and equals.
+        public static void CalculatorAddition(int num1, int num2, int expectedResult)
+        {
+            Window window = application.GetWindow("Калькулятор");
+            window.WaitWhileBusy();
+            window.Get<Button>(SearchCriteria.ByText(num1.ToString())).Click();
+            window.Get<Button>(SearchCriteria.ByAutomationId("93")).Click();
+            window.Get<Button>(SearchCriteria.ByText(num2.ToString())).Click();
+            window.Get<Button>(SearchCriteria.ByAutomationId("121")).Click();
+            window.WaitWhileBusy();
+            SearchCriteria searchCriteria = SearchCriteria.ByAutomationId("158");
+            Label display = window.Get<Label>(searchCriteria);
+            Assert.AreEqual(expectedResult.ToString(), display.Text);
+        }
+
     }
 }
