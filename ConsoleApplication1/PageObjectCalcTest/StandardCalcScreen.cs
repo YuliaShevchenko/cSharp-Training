@@ -14,89 +14,103 @@ using TestStack.White.UIItems.WindowStripControls;
 
 namespace PageObjectCalcTest
 {
-   class StandardCalcScreen
+    class StandardCalcScreen
     {
-        private const string APPNAME = "Калькулятор";
-        public Button equalsButton { get; set; }
-        public Button plusButton { get; set; }
-        public Button minusButton { get; set; }
-        public Button multiplyButton { get; set; }
-        public Button divideButton { get; set; }
-
-        public Button digitOneButton { get; set; }
-        public Button digitTwoButton { get; set; }
-        public Button digitThreeButton { get; set; }
-
-        public Label display { get; set; }
-        public Menu helpTab { get; set; }
-        public MenuBar menuBars { get; set; }
-        public Menu menuBar { get; set; }
-        public Menu viewHelp { get; set; }
+        private const string WINDOWNAME = "Калькулятор";
+        private Window window;
+        public Button equalsButton
+        {
+            get
+            {
+                return window.Get<Button>(SearchCriteria.ByAutomationId("121"));
+            }
+        }
+        public Label display { get { return window.Get<Label>(SearchCriteria.ByAutomationId("158")); } }
+        public Button plusButton { get { return window.Get<Button>(SearchCriteria.ByAutomationId("93")); } }
+        public Button minusButton { get { return window.Get<Button>(SearchCriteria.ByAutomationId("94")); } }
+        public Button multiplyButton { get { return window.Get<Button>(SearchCriteria.ByAutomationId("92")); } }
+        public Button devideButton { get { return window.Get<Button>(SearchCriteria.ByAutomationId("91")); } }
+        public Button oneButton { get { return window.Get<Button>(SearchCriteria.ByText("1")); } }
+        public Button twoButton { get { return window.Get<Button>(SearchCriteria.ByText("2")); } }
+        public Button threeButton { get { return window.Get<Button>(SearchCriteria.ByText("3")); } }
+        public MenuBar menuBar { get { return window.Get<MenuBar>(SearchCriteria.ByAutomationId("Application")); } }
+        public MenuBar helpTab { get { return window.Get<MenuBar>(SearchCriteria.ByAutomationId("Item 3")); } }
 
         public StandardCalcScreen(Application calculator)
         {
-            Window window = calculator.GetWindow(APPNAME);
-            equalsButton = window.Get<Button>(SearchCriteria.ByAutomationId("121"));
-            plusButton = window.Get<Button>(SearchCriteria.ByAutomationId("93"));
-            display = window.Get<Label>(SearchCriteria.ByAutomationId("158"));
-            // minusButton = window.Get<Button>(SearchCriteria.ByAutomationId("121"));
-            digitOneButton = window.Get<Button>(SearchCriteria.ByText("1"));
-            digitTwoButton = window.Get<Button>(SearchCriteria.ByText("2"));
-            digitThreeButton = window.Get<Button>(SearchCriteria.ByText("3"));
-            window.WaitWhileBusy();
-           // menuBar = window.Get<MenuBar>(SearchCriteria.ByAutomationId("Application"));
-            menuBars = window.MenuBar;
-            menuBar = menuBars.MenuItemBy(SearchCriteria.ByText("MenuBar"));
-           helpTab = menuBars.MenuItemBy(SearchCriteria.ByAutomationId("Item 3"));
-           viewHelp = menuBars.MenuItemBy(SearchCriteria.ByAutomationId("Item 311"));
+            window = calculator.GetWindow(WINDOWNAME);
         }
+
         //TODO: window name -const; rename app. methods rename, enumeration(click operation), buttons
+        //TODO: get init controls; rewrite enum via parse; read about path; clean path; read about debug folder; refactor methods(click());   about in calc; tc deviding to 0;
 
-        public void ClickOnHelp()
-        {
-            helpTab.Click();
-            viewHelp.Click();
-        }
+        //public void ClickOnHelp()
+        //{
+        //    MenuBar menuBar = window.MenuBar;
+        //    menuBar.MenuItemBy(GetHelpTab()).Click();
+        //    window.WaitWhileBusy();
+        //    Menu view = menuBar.MenuItemBy(GetViewHelp());
+        //    view.Click();
+        //}
 
-        public void ClickOnOneButton()
-        {
-            digitOneButton.Click();
-        }
-        public void ClickOnTwoButton()
-        {
-            digitTwoButton.Click();
-        }
-        public void ClickOnThreeButton()
-        {
-            digitThreeButton.Click();
-        }
-        public void ClickOnPlusButton()
-        {
-            plusButton.Click();
-        }
-        public void ClickOnEqualsButton()
-        {
-            equalsButton.Click();
-        }
         public string GetDisplayedText()
         {
             return display.Text;
         }
-        public void ClickOnDigitButton(string num)
+        public Button ClickOnDigitButton(string num)
         {
             switch (num)
             {
                 case "1":
-                    ClickOnOneButton();
-                    break;
-
+                    return oneButton;
                 case "2":
-                    ClickOnTwoButton();
-                    break;
+                    return twoButton;
                 case "3":
-                    ClickOnThreeButton();
-                    break;
+                    return threeButton;
             }
+            return null;
+        }
+        public enum OPERATION
+        {
+            PLUS, MINUS, DEVIDE, MULTIPLY
+        }
+
+        public OPERATION GetOperands(string values)
+        {
+            if (values.Equals("PLUS"))
+            {
+                return OPERATION.PLUS;
+            }
+            else if (values.Equals("MINUS"))
+            {
+                return OPERATION.MINUS;
+            }
+            else if (values.Equals("DEVIDE"))
+            {
+                return OPERATION.DEVIDE;
+            }
+            else
+            {
+                return OPERATION.MULTIPLY;
+            }
+        }
+
+        public Button ClickOnOperand(string operation)
+        {
+            OPERATION command = GetOperands(operation);
+            switch (command)
+            {
+                case OPERATION.PLUS:
+                    return plusButton;
+                case OPERATION.MINUS:
+                    return minusButton;
+                case OPERATION.MULTIPLY:
+                    return multiplyButton;
+                case OPERATION.DEVIDE:
+                    return devideButton;
+            }
+            return null;
         }
     }
 }
+

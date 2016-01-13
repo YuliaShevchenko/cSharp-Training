@@ -1,4 +1,5 @@
-﻿Num1, Num2, Result
-1, 2, 3
-2, 2, 4
-3, 3, 6
+﻿Num1, Num2, Operation, Result
+1, 2, PLUS, 3
+2, 2, MINUS, 0
+3, 3, DEVIDE, 1
+1, 2, MULTIPLY, 2

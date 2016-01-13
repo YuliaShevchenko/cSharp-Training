@@ -10,7 +10,8 @@ namespace PageObjectCalculator
     [TestClass]
     public class PageObjectCalcTest
     {
-        string calculatorAppPath = "calc.exe";
+        //string calculatorAppPath ="calc2.exe";
+        string calculatorAppPath = Path.GetFullPath(@"calc2.exe");
         //string fullPath = Path.GetFullPath(@"PageObjectCalculator");
         private const string FILEPATH = @"C:\Users\Jul\Source\Repos\cSharp-Training\ConsoleApplication1\PageObjectCalcTest\Data.csv";
 
@@ -31,26 +32,25 @@ namespace PageObjectCalculator
 
         [TestMethod]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", FILEPATH, "Data#csv", DataAccessMethod.Sequential)]
-        public void AdditionPageObjectTest()
+        public void CalculationTest()
         {
             string num1 = TestContext.DataRow[0].ToString();
             string num2 = TestContext.DataRow[1].ToString();
-            string expectedResult = TestContext.DataRow[2].ToString();
+            string operation = TestContext.DataRow[2].ToString();
+            string expectedResult = TestContext.DataRow[3].ToString();
             StandardCalcScreen calcScreen = new StandardCalcScreen(application);
-            
-            calcScreen.ClickOnDigitButton(num1);
-            calcScreen.ClickOnPlusButton();
-            calcScreen.ClickOnDigitButton(num2);
-            calcScreen.ClickOnEqualsButton();
+            calcScreen.ClickOnDigitButton(num1).Click();
+            calcScreen.ClickOnOperand(operation).Click();
+            calcScreen.ClickOnDigitButton(num2).Click();
+            calcScreen.equalsButton.Click();
             Assert.AreEqual(expectedResult, calcScreen.GetDisplayedText());
-            OpenHelp();
         }
 
-        public void OpenHelp()
-        {
-            StandardCalcScreen calcScreen = new StandardCalcScreen(application);
-         //   calcScreen.ClickOnHelp();
-        }
+        //public void OpenHelp()
+        //{
+        //    StandardCalcScreen calcScreen = new StandardCalcScreen(application);
+        //    calcScreen.ClickOnHelp();
+        //}
     }
 }
 
