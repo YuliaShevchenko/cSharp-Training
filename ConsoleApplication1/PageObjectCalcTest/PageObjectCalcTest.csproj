@@ -73,8 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="calc2.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="calc.exe">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <Choose>
