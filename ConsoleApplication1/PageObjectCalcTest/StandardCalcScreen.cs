@@ -14,10 +14,8 @@ using TestStack.White.UIItems.WindowStripControls;
 
 namespace PageObjectCalcTest
 {
-    class StandardCalcScreen
+    class StandardCalcScreen : Windows
     {
-        private const string WINDOWNAME = "Калькулятор";
-        private Window window;
         public Button equalsButton
         {
             get
@@ -33,30 +31,30 @@ namespace PageObjectCalcTest
         public Button oneButton { get { return window.Get<Button>(SearchCriteria.ByText("1")); } }
         public Button twoButton { get { return window.Get<Button>(SearchCriteria.ByText("2")); } }
         public Button threeButton { get { return window.Get<Button>(SearchCriteria.ByText("3")); } }
-        public MenuBar menuBar { get { return window.Get<MenuBar>(SearchCriteria.ByAutomationId("Application")); } }
-        public MenuBar helpTab { get { return window.Get<MenuBar>(SearchCriteria.ByAutomationId("Item 3")); } }
+        public Button zeroButton { get { return window.Get<Button>(SearchCriteria.ByText("0")); } }
 
-        public StandardCalcScreen(Application calculator)
+        public StandardCalcScreen(Application application) : base(application) { }
+
+        //TODO: get init controls; rewrite enum via parse; read about path; clean path; read about debug folder; refactor methods(click());   about in calc; tc deviding to 0;
+        
+        public void GetHelpMenu()
         {
-            window = calculator.GetWindow(WINDOWNAME);
+            var menuView = window.Get<Menu>(SearchCriteria.ByAutomationId("Item 3"));
+            menuView.Click();
         }
 
-        //TODO: window name -const; rename app. methods rename, enumeration(click operation), buttons
-        //TODO: get init controls; rewrite enum via parse; read about path; clean path; read about debug folder; refactor methods(click());   about in calc; tc deviding to 0;
-
-        //public void ClickOnHelp()
-        //{
-        //    MenuBar menuBar = window.MenuBar;
-        //    menuBar.MenuItemBy(GetHelpTab()).Click();
-        //    window.WaitWhileBusy();
-        //    Menu view = menuBar.MenuItemBy(GetViewHelp());
-        //    view.Click();
-        //}
+        public ModalWindows GetAboutCalcWindow()
+        {
+            var menuViewBasic = window.Get<Menu>(SearchCriteria.ByAutomationId("Item 302"));
+            menuViewBasic.Click();
+            return new ModalWindows(application);
+        }
 
         public string GetDisplayedText()
         {
             return display.Text;
         }
+
         public Button ClickOnDigitButton(string num)
         {
             switch (num)
@@ -67,38 +65,20 @@ namespace PageObjectCalcTest
                     return twoButton;
                 case "3":
                     return threeButton;
+                case "0":
+                    return zeroButton;
             }
             return null;
         }
-        public enum OPERATION
+
+        public OPERATION ConvertStringToEnum(string operation)
         {
-            PLUS, MINUS, DEVIDE, MULTIPLY
+            return (OPERATION)Enum.Parse(typeof(OPERATION), operation, true);
         }
 
-        public OPERATION GetOperands(string values)
+        public Button GetOperationButton(string operation)
         {
-            if (values.Equals("PLUS"))
-            {
-                return OPERATION.PLUS;
-            }
-            else if (values.Equals("MINUS"))
-            {
-                return OPERATION.MINUS;
-            }
-            else if (values.Equals("DEVIDE"))
-            {
-                return OPERATION.DEVIDE;
-            }
-            else
-            {
-                return OPERATION.MULTIPLY;
-            }
-        }
-
-        public Button ClickOnOperand(string operation)
-        {
-            OPERATION command = GetOperands(operation);
-            switch (command)
+            switch (ConvertStringToEnum(operation))
             {
                 case OPERATION.PLUS:
                     return plusButton;
@@ -111,6 +91,11 @@ namespace PageObjectCalcTest
             }
             return null;
         }
+    }
+
+    public enum OPERATION
+    {
+        PLUS, MINUS, DEVIDE, MULTIPLY
     }
 }
 

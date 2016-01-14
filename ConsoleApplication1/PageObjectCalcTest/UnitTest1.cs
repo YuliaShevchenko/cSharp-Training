@@ -10,8 +10,8 @@ namespace PageObjectCalculator
     [TestClass]
     public class PageObjectCalcTest
     {
-        //string calculatorAppPath ="calc2.exe";
-        string calculatorAppPath = Path.GetFullPath(@"calc2.exe");
+        string calculatorAppPath = "calc.exe";
+        //string calculatorAppPath = Path.GetFullPath(@"calc2.exe");
         //string fullPath = Path.GetFullPath(@"PageObjectCalculator");
         private const string FILEPATH = @"C:\Users\Jul\Source\Repos\cSharp-Training\ConsoleApplication1\PageObjectCalcTest\Data.csv";
 
@@ -40,17 +40,42 @@ namespace PageObjectCalculator
             string expectedResult = TestContext.DataRow[3].ToString();
             StandardCalcScreen calcScreen = new StandardCalcScreen(application);
             calcScreen.ClickOnDigitButton(num1).Click();
-            calcScreen.ClickOnOperand(operation).Click();
+            calcScreen.GetOperationButton(operation).Click();
             calcScreen.ClickOnDigitButton(num2).Click();
             calcScreen.equalsButton.Click();
             Assert.AreEqual(expectedResult, calcScreen.GetDisplayedText());
+
         }
 
-        //public void OpenHelp()
-        //{
-        //    StandardCalcScreen calcScreen = new StandardCalcScreen(application);
-        //    calcScreen.ClickOnHelp();
-        //}
+        [TestMethod]
+        [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", FILEPATH, "Data#csv", DataAccessMethod.Sequential)]
+        public void DevidingByZeroTest()
+        {
+            string num1 = TestContext.DataRow[0].ToString();
+            string num2 = TestContext.DataRow[1].ToString();
+            string operation = TestContext.DataRow[2].ToString();
+            string expectedResult = TestContext.DataRow[3].ToString();
+            StandardCalcScreen calcScreen = new StandardCalcScreen(application);
+
+            calcScreen.ClickOnDigitButton(num1).Click();
+            calcScreen.GetOperationButton(operation).Click();
+            calcScreen.ClickOnDigitButton(num2).Click();
+            calcScreen.equalsButton.Click();
+
+            Assert.AreEqual(expectedResult, calcScreen.GetDisplayedText());
+
+        }
+
+        [TestMethod]
+
+        public void OpenAboutPageTest()
+        {
+            StandardCalcScreen calcScreen = new StandardCalcScreen(application);
+            calcScreen.GetHelpMenu();
+            ModalWindows modal = calcScreen.GetAboutCalcWindow();
+            Assert.AreEqual("Калькулятор: сведения", modal.GetTextOnAboutWindow());
+            modal.okButton.Click();
+        }
     }
 }
 

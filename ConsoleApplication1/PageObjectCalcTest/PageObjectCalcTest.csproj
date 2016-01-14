@@ -64,18 +64,18 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ModalWindow.cs" />
     <Compile Include="StandardCalcScreen.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Windows.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data.csv" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="calc.exe">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="calc.exe" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
