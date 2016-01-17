@@ -13,6 +13,7 @@ namespace Task6
 
         public static void AddWorker(Worker worker)
         {
+
             StreamWriter file = new StreamWriter(FILENAME, true);
             file.WriteLine(worker.ToString());
             file.Close();
