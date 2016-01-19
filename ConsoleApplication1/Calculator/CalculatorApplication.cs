@@ -14,8 +14,18 @@ namespace Calculator
         private const string PATH = "calc.exe";
 
         private Application application;
-
-        public static CalculatorApplication INSTANCE = new CalculatorApplication();
+        private static CalculatorApplication instanse;
+        public static CalculatorApplication Instanse
+        {
+            get
+            {
+                if (instanse == null)
+                {
+                    instanse = new CalculatorApplication();
+                }
+                return instanse;
+            }
+        }
 
         private CalculatorApplication()
         {
@@ -30,10 +40,12 @@ namespace Calculator
         {
             application.Close();
         }
-
-        public StandardViewWindow GetWindow(string title)
+        //todo: use generic to return appropriate page
+        public StandardViewScreen GetScreen(string title)
         {
-            return new StandardViewWindow(application.GetWindow(title));
+           Window myWindow = application.GetWindow(title);
+            return new StandardViewScreen(myWindow);
         }
+        //get modal window
     }
 }

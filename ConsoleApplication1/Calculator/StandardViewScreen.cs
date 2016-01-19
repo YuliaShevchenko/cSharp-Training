@@ -12,13 +12,10 @@ using TestStack.White.UIItems.WindowStripControls;
 
 namespace Calculator
 {
-    class StandardViewWindow : BaseWindow
+    class StandardViewScreen : BaseScreen
     {
-        public const string TITLE = "Calculator";
+        public const string EXPECTEDTITLE = "Calculator";
 
-        private Window window;
-        ////TODO: properties start from capital letter - done
-        ////TODO: rename controls(name + type) - done
         public Button EqualsButton
         {
             get
@@ -105,25 +102,24 @@ namespace Calculator
             }
         }
 
-        //TODO: create mainViewWindow, constructor - get window according to view, window validation
-        public StandardViewWindow(Window window)
+        protected override string ExpectedTitle
         {
-            title = TITLE;
-            this.window = window;
-
-            if (!window.Title.Equals(TITLE))
+            get
             {
-                throw new InvalidOperationException();
+                return EXPECTEDTITLE;
             }
         }
 
-        //TODO: screen validation
-        public AboutCalculatorModalWindow GetAboutCalculatorWindow()
+        public StandardViewScreen(Window window) : base(window)
         {
-            AboutHelpMenu.Click();
-            return new AboutCalculatorModalWindow(window.ModalWindow(AboutCalculatorModalWindow.TITLE));
         }
-        ////TODO: delete method GetDisplayedText() - done
+
+        public AboutCalculatorModalScreen OpenAboutCalculatorScreen()
+        {
+            HelpMenu.Click();
+            AboutHelpMenu.Click();
+            return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
+        }
 
         public Button GetDigitButton(string number)
         {

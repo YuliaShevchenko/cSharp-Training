@@ -67,10 +67,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="AboutCalculatorModalWindow.cs" />
-    <Compile Include="BaseWindow.cs" />
+    <Compile Include="AboutCalculatorModalScreen.cs" />
+    <Compile Include="BaseScreen.cs" />
     <Compile Include="CalculatorApplication.cs" />
-    <Compile Include="StandardViewWindow.cs" />
+    <Compile Include="SientificCalculatorScreen.cs" />
+    <Compile Include="StandardViewScreen.cs" />
     <Compile Include="CalculatorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

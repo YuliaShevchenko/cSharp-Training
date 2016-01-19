@@ -1,5 +1,2 @@
 ﻿FirstNumber,SecondNumber,Operation,Result
 2, 0, DIVIDE,"2"
-1, 1, PLUS, "3"
-3, 1, MINUS, "3"
-2, 2, MULTIPLY, "-2"

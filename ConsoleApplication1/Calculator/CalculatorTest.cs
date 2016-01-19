@@ -11,13 +11,13 @@ namespace Calculator
         [TestInitialize]
         public void initialize()
         {
-            CalculatorApplication.INSTANCE.Start();
+            CalculatorApplication.Instanse.Start();
         }
 
         [TestCleanup]
         public void testCleanUp()
         {
-            CalculatorApplication.INSTANCE.Close();
+            CalculatorApplication.Instanse.Close();
         }
         [TestMethod]
         [DeploymentItem("PageObjectCalculator\\DataForPositiveTest.csv")]
@@ -29,7 +29,7 @@ namespace Calculator
             string operation = TestContext.DataRow[2].ToString();
             string expectedResult = TestContext.DataRow[3].ToString();
 
-            StandardViewWindow standardViewWindow = CalculatorApplication.INSTANCE.GetWindow(StandardViewWindow.TITLE);
+            StandardViewScreen standardViewWindow = CalculatorApplication.Instanse.GetScreen(StandardViewScreen.EXPECTEDTITLE);
             standardViewWindow.GetDigitButton(firstNumber).Click();
             standardViewWindow.GetOperationButtons(operation).Click();
             standardViewWindow.GetDigitButton(secondNumber).Click();
@@ -47,7 +47,7 @@ namespace Calculator
             string operation = TestContext.DataRow[2].ToString();
             string expectedResult = TestContext.DataRow[3].ToString();
 
-            StandardViewWindow standardCalcScreen = CalculatorApplication.INSTANCE.GetWindow(StandardViewWindow.TITLE);
+            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen(StandardViewScreen.EXPECTEDTITLE);
             standardCalcScreen.GetDigitButton(firstNumber).Click();
             standardCalcScreen.GetOperationButtons(operation).Click();
             standardCalcScreen.GetDigitButton(secondNumber).Click();
@@ -55,18 +55,18 @@ namespace Calculator
             Assert.AreNotEqual(expectedResult, standardCalcScreen.DisplayLabel.Text);
         }
 
-        ////TODO: rename TC - done
         [TestMethod]
-        public void CheckVersionOnAboutScreenTest()
+        public void CheckVersionOnAboutWindowTest()
         {
-            StandardViewWindow standardCalcScreen = CalculatorApplication.INSTANCE.GetWindow(StandardViewWindow.TITLE);
+            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen(StandardViewScreen.EXPECTEDTITLE);
             standardCalcScreen.HelpMenu.Click();
-            AboutCalculatorModalWindow aboutCalcModalWindow = standardCalcScreen.GetAboutCalculatorWindow();
-            Assert.AreEqual("Version 6.1 (Build 7601: Service Pack 1)", aboutCalcModalWindow.VersionLabel.Text);
-            aboutCalcModalWindow.OkButton.Click();
+            AboutCalculatorModalScreen aboutCalcModalScreen = standardCalcScreen.OpenAboutCalculatorScreen();
+            Assert.AreEqual("Version 6.1 (Build 7601: Service Pack 1)", aboutCalcModalScreen.VersionLabel.Text);
+            aboutCalcModalScreen.OkButton.Click();
         }
 
-        //TODO: Singleton
-        //TODO: make base window, each window should have it's own title and should be initialized with window
+        //зачем синглтон, придумать и реализовать что-то в калькуляторе
+        //todo: files in the solution should have the same name as classes
+        //create a structure in solution
     }
 }
