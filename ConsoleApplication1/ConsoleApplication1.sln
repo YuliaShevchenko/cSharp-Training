@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lesson2Task1", "ConsoleApplication1\Lesson2Task1.csproj", "{31013D92-EBC2-44E5-A71A-81EF00BDED20}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Matrix", "Matrix\Matrix.csproj", "{D1E4B494-7570-4B8E-A056-03A9307EF969}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubstringInString", "SubstringInString\SubstringInString.csproj", "{B983B9B2-A1CA-4ADC-B749-E44885378701}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Calculator", "Calculator\Calculator.csproj", "{C3E93D0B-86D8-47C4-8FF8-49C4D425DCF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{B983B9B2-A1CA-4ADC-B749-E44885378701}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B983B9B2-A1CA-4ADC-B749-E44885378701}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B983B9B2-A1CA-4ADC-B749-E44885378701}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E93D0B-86D8-47C4-8FF8-49C4D425DCF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E93D0B-86D8-47C4-8FF8-49C4D425DCF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E93D0B-86D8-47C4-8FF8-49C4D425DCF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E93D0B-86D8-47C4-8FF8-49C4D425DCF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
