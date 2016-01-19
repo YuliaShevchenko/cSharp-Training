@@ -40,12 +40,20 @@ namespace Calculator
         {
             application.Close();
         }
+
         //todo: use generic to return appropriate page
         public StandardViewScreen GetScreen(string title)
         {
+
+
            Window myWindow = application.GetWindow(title);
             return new StandardViewScreen(myWindow);
         }
+
         //get modal window
+        public AboutCalculatorModalScreen GetModalScreen(Window window)
+        {
+           return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
+        }
     }
 }
