@@ -12,7 +12,7 @@ namespace Calculator
 {
     class AboutCalculatorModalScreen : BaseScreen
     {
-        public const string EXPECTEDTITLE = "About Calculator";
+        public const string EXPECTEDTITLE = "Калькулятор: сведения";
 
         public Button OkButton
         {

@@ -14,7 +14,7 @@ namespace Calculator
 {
     class StandardViewScreen : BaseScreen
     {
-        public const string EXPECTEDTITLE = "";
+        public const string EXPECTEDTITLE = "Калькулятор";
 
         public Button EqualsButton
         {
@@ -118,7 +118,7 @@ namespace Calculator
         {
             HelpMenu.Click();
             AboutHelpMenu.Click();
-            return CalculatorApplication.Instanse.GetModalScreen(window);
+            return CalculatorApplication.Instanse.GetScreen<AboutCalculatorModalScreen>(AboutCalculatorModalScreen.EXPECTEDTITLE);
         }
 
         public Button GetDigitButton(string number)
