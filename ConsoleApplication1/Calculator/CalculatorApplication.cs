@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading.Tasks;
 using TestStack.White;
 using TestStack.White.UIItems.WindowItems;
 
@@ -42,18 +41,16 @@ namespace Calculator
         }
 
         //todo: use generic to return appropriate page
-        public StandardViewScreen GetScreen(string title)
+        public T GetScreen<T>(string title) where T : BaseScreen
         {
-
-
-           Window myWindow = application.GetWindow(title);
-            return new StandardViewScreen(myWindow);
+            Window myWindow = application.GetWindow(title);
+            return (T) Activator.CreateInstance(typeof(T), myWindow);
         }
 
         //get modal window
         public AboutCalculatorModalScreen GetModalScreen(Window window)
         {
-           return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
+            return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
         }
     }
 }
