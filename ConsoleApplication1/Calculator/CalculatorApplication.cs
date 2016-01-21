@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading.Tasks;
 using TestStack.White;
+using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.White.UIItems.WindowStripControls;
 
 namespace Calculator
 {
@@ -42,18 +44,18 @@ namespace Calculator
         }
 
         //todo: use generic to return appropriate page
-        public StandardViewScreen GetScreen(string title)
-        {
-
-
-           Window myWindow = application.GetWindow(title);
-            return new StandardViewScreen(myWindow);
-        }
+        //public StandardViewScreen GetScreen(string title)
+        //{
+        //    Window myWindow = application.GetWindow(title);
+        //    return new StandardViewScreen(myWindow);
+        //}
+        //    Window Screen = Desktop.Instance.Windows().Find(obj => obj.Title.Equals(StandardViewScreen.EXPECTEDTITLE));
 
         //get modal window
         public AboutCalculatorModalScreen GetModalScreen(Window window)
         {
-           return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
+            return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
+        }
         }
     }
 }
