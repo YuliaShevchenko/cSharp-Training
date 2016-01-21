@@ -118,7 +118,7 @@ namespace Calculator
         {
             HelpMenu.Click();
             AboutHelpMenu.Click();
-            return CalculatorApplication.Instanse.GetModalScreen(window);
+            return CalculatorApplication.Instanse.GetScreen<AboutCalculatorModalScreen>(AboutCalculatorModalScreen.EXPECTEDTITLE);
         }
 
         public Button GetDigitButton(string number)

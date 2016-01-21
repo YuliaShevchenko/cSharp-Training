@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Threading.Tasks;
 using TestStack.White;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
@@ -44,18 +43,30 @@ namespace Calculator
         }
 
         //todo: use generic to return appropriate page
-        //public StandardViewScreen GetScreen(string title)
+        //public T GetScreen<T>(string title) where T : BaseScreen
         //{
         //    Window myWindow = application.GetWindow(title);
-        //    return new StandardViewScreen(myWindow);
+        //    return (T) Activator.CreateInstance(typeof(T), myWindow);
         //}
-        //    Window Screen = Desktop.Instance.Windows().Find(obj => obj.Title.Equals(StandardViewScreen.EXPECTEDTITLE));
+        public T GetScreen<T>(string title) where T : BaseScreen
+        {
+            switch (title)
+            {
+                case (StandardViewScreen.EXPECTEDTITLE):
+                    BaseScreen standardScreen = new StandardViewScreen(application.GetWindow(title));
+                    return (T)standardScreen;
+                case (AboutCalculatorModalScreen.EXPECTEDTITLE):
+                    Window mainScreen = application.GetWindow(StandardViewScreen.EXPECTEDTITLE);
+                    BaseScreen aboutScreen = GetModalScreen(mainScreen);
+                    return (T)aboutScreen;
+            }
+            return null;
+        }
 
         //get modal window
-        public AboutCalculatorModalScreen GetModalScreen(Window window)
+        private AboutCalculatorModalScreen GetModalScreen(Window window)
         {
             return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
-        }
         }
     }
 }
