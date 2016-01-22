@@ -46,25 +46,33 @@ namespace Calculator
         //public T GetScreen<T>(string title) where T : BaseScreen
         //{
         //    Window myWindow = application.GetWindow(title);
-        //    return (T) Activator.CreateInstance(typeof(T), myWindow);
+        //    return (T)Activator.CreateInstance(typeof(T), myWindow);
         //}
+        //public T GetScreen<T>(string title) where T : BaseScreen
+        //{
+        //    switch (title)
+        //    {
+        //        case (StandardViewScreen.EXPECTEDTITLE):
+        //            BaseScreen standardScreen = new StandardViewScreen(application.GetWindow(title));
+        //            return (T)standardScreen;
+        //        case (AboutCalculatorModalScreen.EXPECTEDTITLE):
+        //            Window mainScreen = application.GetWindow(StandardViewScreen.EXPECTEDTITLE);
+        //            BaseScreen aboutScreen = GetModalScreen(mainScreen);
+        //            return (T)aboutScreen;
+        //    }
+        //    return null;
+        //}
+
         public T GetScreen<T>(string title) where T : BaseScreen
         {
-            switch (title)
-            {
-                case (StandardViewScreen.EXPECTEDTITLE):
-                    BaseScreen standardScreen = new StandardViewScreen(application.GetWindow(title));
-                    return (T)standardScreen;
-                case (AboutCalculatorModalScreen.EXPECTEDTITLE):
-                    Window mainScreen = application.GetWindow(StandardViewScreen.EXPECTEDTITLE);
-                    BaseScreen aboutScreen = GetModalScreen(mainScreen);
-                    return (T)aboutScreen;
-            }
-            return null;
+           return (T)ScreenFactory.CreateScreen(title);
         }
 
+        public Window GetMainScreen(string title) {
+            return application.GetWindow(title);
+        }
         //get modal window
-        private AboutCalculatorModalScreen GetModalScreen(Window window)
+        public AboutCalculatorModalScreen GetModalScreen(Window window)
         {
             return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
         }

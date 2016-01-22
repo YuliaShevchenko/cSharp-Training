@@ -11,44 +11,44 @@ namespace Calculator
 {
     class UpperMenuBar
     {
-        
-        //public Menu ViewMenu
-        //{
-        //    get
-        //    {
-        //        return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 1"));
-        //    }
-        //}
-        //public Menu HistoryMenu
-        //{
-        //    get
-        //    {
-        //        return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 965"));
-        //    }
-        //}
 
-        //private static UpperMenuBar instance;
-        //public static UpperMenuBar Instance
-        //{
-        //    get
-        //    {
-        //        if (instance == null)
-        //        {
-        //            instance = new UpperMenuBar();
-        //        }
-        //        return instance;
-        //    }
-        //}
+        public Menu ViewMenu
+        {
+            get
+            {
+                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 1"));
+            }
+        }
+        public Menu HistoryMenu
+        {
+            get
+            {
+                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 965"));
+            }
+        }
 
-        //private UpperMenuBar(Window window)
-        //{
-        //   CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
-        //}
-        //public void TurnOnHistory()
-        //{
-        //    ViewMenu.Click();
-        //    HistoryMenu.Click();
-           
-        //}
+        private static UpperMenuBar instance;
+        public static UpperMenuBar Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new UpperMenuBar();
+                }
+                return instance;
+            }
+        }
+
+        private UpperMenuBar(Window window)
+        {
+            CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
+        }
+        public void TurnOnHistory()
+        {
+            ViewMenu.Click();
+            HistoryMenu.Click();
+
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace Calculator
     class SientificCalculatorScreen : BaseScreen
     {
         public const string EXPECTEDTITLE = "Calculator";
+
         protected override string ExpectedTitle
         {
             get

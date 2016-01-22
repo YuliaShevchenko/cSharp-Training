@@ -21,6 +21,7 @@ namespace Calculator
                 return window.Get<Button>(SearchCriteria.ByAutomationId("1"));
             }
         }
+
         public Label VersionLabel
         {
             get
