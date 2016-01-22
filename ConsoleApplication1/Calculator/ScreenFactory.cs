@@ -14,12 +14,10 @@ namespace Calculator
             switch (title)
             {
                 case (StandardViewScreen.EXPECTEDTITLE):
-                    BaseScreen standardScreen = new StandardViewScreen(CalculatorApplication.Instanse.GetMainScreen(title));
-                    return standardScreen;
+                    return new StandardViewScreen(CalculatorApplication.Instanse.GetMainScreen(title));
                 case (AboutCalculatorModalScreen.EXPECTEDTITLE):
                     Window mainScreen = CalculatorApplication.Instanse.GetMainScreen(StandardViewScreen.EXPECTEDTITLE);
-                    BaseScreen aboutScreen = CalculatorApplication.Instanse.GetModalScreen(mainScreen);
-                    return aboutScreen;
+                    return CalculatorApplication.Instanse.GetModalScreen(mainScreen);
                 default:
                     return null;
             }
