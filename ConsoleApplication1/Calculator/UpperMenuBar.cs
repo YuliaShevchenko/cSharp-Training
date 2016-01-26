@@ -11,12 +11,12 @@ namespace Calculator
 {
     class UpperMenuBar
     {
-
+        private Window window;
         public Menu ViewMenu
         {
             get
             {
-                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 1"));
+                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 1").AndByText("View"));
             }
         }
         public Menu HistoryMenu
@@ -40,15 +40,21 @@ namespace Calculator
             }
         }
 
-        private UpperMenuBar(Window window)
+        private UpperMenuBar()
         {
-            CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
+           window = CalculatorApplication.Instanse.GetMainScreen(StandardViewScreen.EXPECTEDTITLE);
         }
         public void TurnOnHistory()
         {
             ViewMenu.Click();
             HistoryMenu.Click();
+            
+            
 
         }
+
+       //Use this Menu BAr to open About modal window
+
+
     }
 }

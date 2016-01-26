@@ -48,6 +48,8 @@ namespace Calculator
         //    Window myWindow = application.GetWindow(title);
         //    return (T)Activator.CreateInstance(typeof(T), myWindow);
         //}
+
+        //TODO: base on T.IsModal if..else
         //public T GetScreen<T>(string title) where T : BaseScreen
         //{
         //    switch (title)
@@ -63,11 +65,13 @@ namespace Calculator
         //    return null;
         //}
 
+        //TODO: set IsModal property (true/false in parametrs)
         public T GetScreen<T>(string title) where T : BaseScreen
-        {
+        {           
            return (T)ScreenFactory.CreateScreen(title);
         }
 
+        //TODO: create property mainwindow to pass in params; to find  modal window from parent.
         public Window GetMainScreen(string title) {
             return application.GetWindow(title);
         }
