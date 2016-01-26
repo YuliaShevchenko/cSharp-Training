@@ -1,5 +1,0 @@
-﻿FirstNumber,SecondNumber,Operation,Result
-2, 0, DIVIDE,"Cannot divide by zero"
-1, 1, PLUS, "2"
-3, 1, MINUS, "2"
-2, 2, MULTIPLY, "4"
