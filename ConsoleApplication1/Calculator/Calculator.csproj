@@ -72,6 +72,9 @@
   <ItemGroup>
     <Compile Include="AboutCalculatorModalScreen.cs" />
     <Compile Include="BaseScreen.cs" />
+    <Compile Include="ScreenFactory.cs" />
+    <Compile Include="Screens\AboutCalculatorModalScreen.cs" />
+    <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="CalculatorApplication.cs" />
     <Compile Include="ScreenFactory.cs" />
     <Compile Include="SientificCalculatorScreen.cs" />
@@ -84,7 +87,7 @@
     <None Include="DataForNegativeTest.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="DataForPositiveTest.csv">
+    <None Include="TestData\DataForPositiveTest.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

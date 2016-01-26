@@ -68,8 +68,7 @@ namespace Calculator
             Assert.AreEqual("Version 6.1 (Build 7601: Service Pack 1)", aboutCalcModalScreen.VersionLabel.Text);
             aboutCalcModalScreen.OkButton.Click();
         }
-        //зачем синглтон, придумать и реализовать что-то в калькуляторе
-        //todo: files in the solution should have the same name as classes
+       
         //todo: create a structure in solution
         [TestMethod]
         public void TurnOnHistoryTest()
@@ -78,13 +77,12 @@ namespace Calculator
             UpperMenuBar.Instance.ViewMenu.Click();
            // Assert.IsTrue(IsElementToggledOn(UpperMenuBar.Instance.HistoryMenu));
         }
-
+        //TODO: read abot CustomUI items. create toggle menu item
 
         private bool IsElementToggledOn(AutomationElement element)
         {
             if (element == null)
             {
-                // TODO: Invalid parameter error handling.
                 return false;
             }
 
@@ -95,7 +93,6 @@ namespace Calculator
                 togPattern = objPattern as TogglePattern;
                 return togPattern.Current.ToggleState == ToggleState.On;
             }
-            // TODO: Object doesn't support TogglePattern error handling.
             return false;
         }
     }

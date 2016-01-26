@@ -16,7 +16,7 @@ namespace Calculator
         {
             get
             {
-                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 1").AndByText("Вид"));
+                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 1").AndByText("View"));
             }
         }
         public Menu HistoryMenu
@@ -47,15 +47,13 @@ namespace Calculator
         public void TurnOnHistory()
         {
             ViewMenu.Click();
-           
-           
             HistoryMenu.Click();
             
             
 
         }
 
-       
+       //Use this Menu BAr to open About modal window
 
 
     }

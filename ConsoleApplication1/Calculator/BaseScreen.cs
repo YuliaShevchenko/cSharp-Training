@@ -11,7 +11,7 @@ namespace Calculator
     abstract class BaseScreen
     {
         protected Window window;
-
+        //TODO: create property IsModal, by default all created screens set this property to false in constructor
         protected abstract string ExpectedTitle { get; }
 
         public BaseScreen(Window window)
