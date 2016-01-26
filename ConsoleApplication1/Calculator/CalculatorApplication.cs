@@ -15,6 +15,14 @@ namespace Calculator
         private const string PATH = "calc.exe";
 
         private Application application;
+        public Window MainWindow
+        {
+            get
+            {
+                return application.GetWindow("Калькулятор");
+            }
+        }
+
         private static CalculatorApplication instanse;
         public static CalculatorApplication Instanse
         {
@@ -50,35 +58,20 @@ namespace Calculator
         //}
 
         //TODO: base on T.IsModal if..else
-        //public T GetScreen<T>(string title) where T : BaseScreen
-        //{
-        //    switch (title)
-        //    {
-        //        case (StandardViewScreen.EXPECTEDTITLE):
-        //            BaseScreen standardScreen = new StandardViewScreen(application.GetWindow(title));
-        //            return (T)standardScreen;
-        //        case (AboutCalculatorModalScreen.EXPECTEDTITLE):
-        //            Window mainScreen = application.GetWindow(StandardViewScreen.EXPECTEDTITLE);
-        //            BaseScreen aboutScreen = GetModalScreen(mainScreen);
-        //            return (T)aboutScreen;
-        //    }
-        //    return null;
-        //}
+        
 
         //TODO: set IsModal property (true/false in parametrs)
         public T GetScreen<T>(string title) where T : BaseScreen
-        {           
-           return (T)ScreenFactory.CreateScreen(title);
+        {
+            return ScreenFactory.CreateScreen<T>(title);
         }
 
         //TODO: create property mainwindow to pass in params; to find  modal window from parent.
-        public Window GetMainScreen(string title) {
-            return application.GetWindow(title);
-        }
         //get modal window
-        public AboutCalculatorModalScreen GetModalScreen(Window window)
+        public Window GetModalWindow(string title)
         {
-            return new AboutCalculatorModalScreen(window.ModalWindow(AboutCalculatorModalScreen.EXPECTEDTITLE));
+            return MainWindow.ModalWindow(title);
         }
+        
     }
 }

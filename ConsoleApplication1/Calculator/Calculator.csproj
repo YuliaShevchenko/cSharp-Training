@@ -84,7 +84,9 @@
     <None Include="DataForNegativeTest.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="DataForPositiveTest.csv" />
+    <None Include="DataForPositiveTest.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />

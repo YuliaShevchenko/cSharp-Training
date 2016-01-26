@@ -38,8 +38,19 @@ namespace Calculator
             }
         }
 
+        new public bool IsModal
+        {
+            get
+            {
+                return true;
+            }
+        }
+       
+
         public AboutCalculatorModalScreen(Window window) : base(window)
         {
+            
         }
+
     }
 }
