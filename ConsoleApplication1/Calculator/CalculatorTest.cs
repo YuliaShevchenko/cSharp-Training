@@ -28,7 +28,7 @@ namespace Calculator
             string firstNumber, secondNumber, operation, expectedResult;
             GetDigitInDataFile(out firstNumber, out secondNumber, out operation, out expectedResult);
 
-            StandardViewScreen standardViewWindow = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
+            StandardViewScreen standardViewWindow = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>();
             standardViewWindow.GetDigitButton(firstNumber).Click();
             standardViewWindow.GetOperationButtons(operation).Click();
             standardViewWindow.GetDigitButton(secondNumber).Click();
@@ -43,7 +43,7 @@ namespace Calculator
         {
             string firstNumber, secondNumber, operation, expectedResult;
             GetDigitInDataFile(out firstNumber, out secondNumber, out operation, out expectedResult);
-            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
+            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>();
             standardCalcScreen.GetDigitButton(firstNumber).Click();
             standardCalcScreen.GetOperationButtons(operation).Click();
             standardCalcScreen.GetDigitButton(secondNumber).Click();
@@ -62,9 +62,8 @@ namespace Calculator
         [TestMethod]
         public void CheckVersionOnAboutWindowTest()
         {
-            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
-            standardCalcScreen.HelpMenu.Click();
-            AboutCalculatorModalScreen aboutCalcModalScreen = standardCalcScreen.OpenAboutCalculatorScreen();
+            UpperMenuBar.Instance.ClickAboutCalculatorButton();
+            AboutCalculatorModalScreen aboutCalcModalScreen = CalculatorApplication.Instanse.GetScreen<AboutCalculatorModalScreen>();
             Assert.AreEqual("Version 6.1 (Build 7601: Service Pack 1)", aboutCalcModalScreen.VersionLabel.Text);
             aboutCalcModalScreen.OkButton.Click();
         }

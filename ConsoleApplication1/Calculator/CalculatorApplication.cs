@@ -58,20 +58,15 @@ namespace Calculator
         //}
 
         //TODO: base on T.IsModal if..else
-        
+
 
         //TODO: set IsModal property (true/false in parametrs)
-        public T GetScreen<T>(string title) where T : BaseScreen
+        public T GetScreen<T>() where T : BaseScreen, new()
         {
-            return ScreenFactory.CreateScreen<T>(title);
+            return ScreenFactory.CreateScreen<T>(MainWindow);
         }
 
         //TODO: create property mainwindow to pass in params; to find  modal window from parent.
-        //get modal window
-        public Window GetModalWindow(string title)
-        {
-            return MainWindow.ModalWindow(title);
-        }
-        
+
     }
 }

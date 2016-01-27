@@ -21,7 +21,6 @@ namespace Calculator
                 return window.Get<Button>(SearchCriteria.ByAutomationId("1"));
             }
         }
-
         public Label VersionLabel
         {
             get
@@ -30,15 +29,14 @@ namespace Calculator
             }
         }
 
-        protected override string ExpectedTitle
+        public override string ExpectedTitle
         {
             get
             {
                 return EXPECTEDTITLE;
             }
         }
-
-        new public bool IsModal
+        public override bool IsModal
         {
             get
             {
@@ -48,8 +46,11 @@ namespace Calculator
        
 
         public AboutCalculatorModalScreen(Window window) : base(window)
+        {           
+        }
+
+        public AboutCalculatorModalScreen() : base()
         {
-            
         }
 
     }

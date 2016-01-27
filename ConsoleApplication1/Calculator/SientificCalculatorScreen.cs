@@ -11,14 +11,21 @@ namespace Calculator
     {
         public const string EXPECTEDTITLE = "Calculator";
 
-        protected override string ExpectedTitle
+        public override string ExpectedTitle
         {
             get
             {
                 return EXPECTEDTITLE;
             }
         }
-        
+        public override bool IsModal
+        {
+            get
+            {
+                return false;
+            }
+        }
+
         public SientificCalculatorScreen(Window window) : base(window)
         {
 

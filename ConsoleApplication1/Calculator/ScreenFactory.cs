@@ -9,21 +9,21 @@ namespace Calculator
 {
     class ScreenFactory
     {
-        public static T CreateScreen<T>(string title)where T:BaseScreen
+        public static T CreateScreen<T>(Window window) where T : BaseScreen, new()
         {
-            if (title == StandardViewScreen.EXPECTEDTITLE)
+            BaseScreen t = new T();
+            bool isModalScreen = t.IsModal;
+            if (isModalScreen)
             {
-                Window mainWindow = CalculatorApplication.Instanse.MainWindow;
-                BaseScreen screen = new StandardViewScreen(mainWindow);
-                return (T)screen;
+                Window modalWindow = window.ModalWindow(t.ExpectedTitle);
+                t.Init(modalWindow);
+                return (T)t;
             }
-            if (title == AboutCalculatorModalScreen.EXPECTEDTITLE)
+            else
             {
-                Window modalWindow = CalculatorApplication.Instanse.GetModalWindow(title);
-                BaseScreen screen = new AboutCalculatorModalScreen(modalWindow);
-                return (T)screen;
+                t.Init(window);
+                return (T)t;
             }
-            return null;
         }
     }
 }
