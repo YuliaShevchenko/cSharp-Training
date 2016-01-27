@@ -73,10 +73,7 @@
     <Compile Include="AboutCalculatorModalScreen.cs" />
     <Compile Include="BaseScreen.cs" />
     <Compile Include="ScreenFactory.cs" />
-    <Compile Include="Screens\AboutCalculatorModalScreen.cs" />
-    <Compile Include="Screens\BaseScreen.cs" />
     <Compile Include="CalculatorApplication.cs" />
-    <Compile Include="ScreenFactory.cs" />
     <Compile Include="SientificCalculatorScreen.cs" />
     <Compile Include="StandardViewScreen.cs" />
     <Compile Include="CalculatorTest.cs" />
@@ -87,11 +84,12 @@
     <None Include="DataForNegativeTest.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="TestData\DataForPositiveTest.csv">
+    <None Include="DataForPositiveTest.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

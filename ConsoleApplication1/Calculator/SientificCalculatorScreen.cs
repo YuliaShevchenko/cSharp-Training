@@ -18,7 +18,7 @@ namespace Calculator
                 return EXPECTEDTITLE;
             }
         }
-
+        
         public SientificCalculatorScreen(Window window) : base(window)
         {
 

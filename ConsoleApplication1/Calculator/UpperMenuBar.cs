@@ -42,7 +42,7 @@ namespace Calculator
 
         private UpperMenuBar()
         {
-           window = CalculatorApplication.Instanse.GetMainScreen(StandardViewScreen.EXPECTEDTITLE);
+           window = CalculatorApplication.Instanse.MainWindow;
         }
         public void TurnOnHistory()
         {

@@ -110,15 +110,9 @@ namespace Calculator
             }
         }
 
-        protected override bool IsModal
-        {
-            get
-            {
-                return false;
-            }
-        }
-        public StandardViewScreen(Window window)
-            : base(window)
+        
+
+        public StandardViewScreen(Window window) : base(window)
         {
         }
 
