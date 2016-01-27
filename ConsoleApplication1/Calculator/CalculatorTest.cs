@@ -20,6 +20,7 @@ namespace Calculator
         {
             CalculatorApplication.Instanse.Close();
         }
+
         [TestMethod]
         [DeploymentItem("Calculator\\DataForPositiveTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\DataForPositiveTest.csv", "DataForPositiveTest.csv", DataAccessMethod.Sequential)]
@@ -69,8 +70,8 @@ namespace Calculator
             aboutCalcModalScreen.OkButton.Click();
         }
        
-        //todo: create a structure in solution
         [TestMethod]
+        //[ControlTypeMapping(CustomUIItemType.Menu)]
         public void TurnOnHistoryTest()
         {
             UpperMenuBar.Instance.TurnOnHistory();

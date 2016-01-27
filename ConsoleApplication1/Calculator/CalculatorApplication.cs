@@ -52,18 +52,18 @@ namespace Calculator
         //TODO: base on T.IsModal if..else
         //public T GetScreen<T>(string title) where T : BaseScreen
         //{
-        //    switch (title)
+        //    if (title == StandardViewScreen.EXPECTEDTITLE)
         //    {
-        //        case (StandardViewScreen.EXPECTEDTITLE):
+        // 
         //            BaseScreen standardScreen = new StandardViewScreen(application.GetWindow(title));
         //            return (T)standardScreen;
-        //        case (AboutCalculatorModalScreen.EXPECTEDTITLE):
+    //}
+        //        else{
         //            Window mainScreen = application.GetWindow(StandardViewScreen.EXPECTEDTITLE);
         //            BaseScreen aboutScreen = GetModalScreen(mainScreen);
         //            return (T)aboutScreen;
         //    }
-        //    return null;
-        //}
+        //    
 
         //TODO: set IsModal property (true/false in parametrs)
         public T GetScreen<T>(string title) where T : BaseScreen
@@ -75,6 +75,7 @@ namespace Calculator
         public Window GetMainScreen(string title) {
             return application.GetWindow(title);
         }
+
         //get modal window
         public AboutCalculatorModalScreen GetModalScreen(Window window)
         {

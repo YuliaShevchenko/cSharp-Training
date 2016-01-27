@@ -37,6 +37,13 @@ namespace Calculator
                 return EXPECTEDTITLE;
             }
         }
+        protected override bool IsModal
+        {
+            get
+            {
+                return true;
+            }
+        }
 
         public AboutCalculatorModalScreen(Window window) : base(window)
         {
