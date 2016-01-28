@@ -48,9 +48,6 @@ namespace Calculator
         {
             ViewMenu.Click();
             HistoryMenu.Click();
-            
-            
-
         }
 
        //Use this Menu BAr to open About modal window

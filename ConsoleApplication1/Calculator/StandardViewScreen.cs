@@ -110,8 +110,6 @@ namespace Calculator
             }
         }
 
-        
-
         public StandardViewScreen(Window window) : base(window)
         {
         }

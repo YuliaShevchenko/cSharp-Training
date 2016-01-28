@@ -50,7 +50,6 @@ namespace Calculator
             application.Close();
         }
 
-        //todo: use generic to return appropriate page
         //public T GetScreen<T>(string title) where T : BaseScreen
         //{
         //    Window myWindow = application.GetWindow(title);
