@@ -87,38 +87,27 @@ namespace Calculator
                 return window.Get<Button>(SearchCriteria.ByText("0"));
             }
         }
-        public Menu HelpMenu
-        {
-            get
-            {
-                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 3"));
-            }
-        }
-        public Menu AboutHelpMenu
-        {
-            get
-            {
-                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 302"));
-            }
-        }
 
-        protected override string ExpectedTitle
+        public override string ExpectedTitle
         {
             get
             {
                 return EXPECTEDTITLE;
             }
         }
+        public override bool IsModal
+        {
+            get
+            {
+                return false;
+            }
+        }
 
         public StandardViewScreen(Window window) : base(window)
         {
         }
-
-        public AboutCalculatorModalScreen OpenAboutCalculatorScreen()
+        public StandardViewScreen() : base()
         {
-            HelpMenu.Click();
-            AboutHelpMenu.Click();
-            return CalculatorApplication.Instanse.GetScreen<AboutCalculatorModalScreen>(AboutCalculatorModalScreen.EXPECTEDTITLE);
         }
 
         public Button GetDigitButton(string number)

@@ -26,6 +26,20 @@ namespace Calculator
                 return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 965"));
             }
         }
+        public Menu HelpMenu
+        {
+            get
+            {
+                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 3"));
+            }
+        }
+        public Menu AboutHelpMenu
+        {
+            get
+            {
+                return window.Get<Menu>(SearchCriteria.ByAutomationId("Item 302"));
+            }
+        }
 
         private static UpperMenuBar instance;
         public static UpperMenuBar Instance
@@ -42,16 +56,21 @@ namespace Calculator
 
         private UpperMenuBar()
         {
-           window = CalculatorApplication.Instanse.MainWindow;
+            window = CalculatorApplication.Instanse.MainWindow;
         }
+
         public void TurnOnHistory()
         {
             ViewMenu.Click();
             HistoryMenu.Click();
         }
 
-       //Use this Menu BAr to open About modal window
-
+        //Use this Menu BAr to open About modal window
+        public void ClickAboutCalculatorButton()
+        {
+            HelpMenu.Click();
+            AboutHelpMenu.Click();           
+        }
 
     }
 }

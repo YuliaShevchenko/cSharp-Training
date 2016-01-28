@@ -11,18 +11,25 @@ namespace Calculator
     abstract class BaseScreen
     {
         protected Window window;
-        protected abstract bool IsModal { get; }
         //TODO: create property IsModal, by default all created screens set this property to false in constructor
-        protected abstract string ExpectedTitle { get; }
-        public bool IsModal
+        public abstract string ExpectedTitle { get; }
+        public abstract bool IsModal { get; }
+
+
+        public BaseScreen(Window window)
         {
-            get
+            this.window = window;
+            if (!getTitle().Equals(ExpectedTitle))
             {
-                return false;
+                throw new InvalidOperationException();
             }
         }
 
-        public BaseScreen(Window window)
+        public BaseScreen()
+        {
+        }
+
+        public void Init(Window window)
         {
             this.window = window;
             if (!getTitle().Equals(ExpectedTitle))
@@ -40,5 +47,7 @@ namespace Calculator
         {
             window.Close();
         }
+
+
     }
 }
