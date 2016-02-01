@@ -75,6 +75,8 @@ namespace Calculator
         {
             UpperMenuBar.Instance.TurnOnHistory();
             UpperMenuBar.Instance.ViewMenu.Click();
+//             UpperMenuBar.Instance.HistoryMenu; 
+//Assert.AreNotEqual(null, myDateUIItem); myDateUIItem..EnterDate(DateTime.Today);
            // Assert.IsTrue(IsElementToggledOn(UpperMenuBar.Instance.HistoryMenu));
         }
         //TODO: read abot CustomUI items. create toggle menu item
