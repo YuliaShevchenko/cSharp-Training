@@ -10,7 +10,7 @@ using TestStack.White.UIItems.Custom;
 namespace Calculator
 {
     [ControlTypeMapping(CustomUIItemType.MenuItem)]
-   public class MyCustomMenu : CustomUIItem
+    public class MyCustomMenu : CustomUIItem
     {
 
         public MyCustomMenu(AutomationElement automationElement, ActionListener actionListener)
@@ -20,13 +20,18 @@ namespace Calculator
 
         public MyCustomMenu() { }
 
-        public virtual void EnterDate()
+        public virtual bool IsToggledOn()
         {
-            //Base class, i.e. CustomUIItem has property called Container. Use this find the items within this.
-            //Can also use SearchCriteria for find items
-            Console.WriteLine("ttttttttttt");
-        }
+            var element = this.AutomationElement;
 
+            Object objPattern;
+            if (true == element.TryGetCurrentPattern(TogglePattern.Pattern, out objPattern))
+            {
+                return ((TogglePattern)objPattern).Current.ToggleState == ToggleState.On;
+            }
+
+            return false;
+        }
 
     }
 }

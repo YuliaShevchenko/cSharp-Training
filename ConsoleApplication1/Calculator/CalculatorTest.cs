@@ -20,7 +20,6 @@ namespace Calculator
         {
             CalculatorApplication.Instanse.Close();
         }
-
         [TestMethod]
         [DeploymentItem("Calculator\\DataForPositiveTest.csv")]
         [DataSource("Microsoft.VisualStudio.TestTools.DataSource.CSV", "|DataDirectory|\\DataForPositiveTest.csv", "DataForPositiveTest.csv", DataAccessMethod.Sequential)]
@@ -68,34 +67,35 @@ namespace Calculator
             Assert.AreEqual("Version 6.1 (Build 7601: Service Pack 1)", aboutCalcModalScreen.VersionLabel.Text);
             aboutCalcModalScreen.OkButton.Click();
         }
-       
+        
+
+        //todo: create a structure in solution
         [TestMethod]
-        //[ControlTypeMapping(CustomUIItemType.Menu)]
         public void TurnOnHistoryTest()
         {
-            UpperMenuBar.Instance.TurnOnHistory();
             UpperMenuBar.Instance.ViewMenu.Click();
-//             UpperMenuBar.Instance.HistoryMenu; 
-//Assert.AreNotEqual(null, myDateUIItem); myDateUIItem..EnterDate(DateTime.Today);
-           // Assert.IsTrue(IsElementToggledOn(UpperMenuBar.Instance.HistoryMenu));
+            if (!UpperMenuBar.Instance.HistoryMenu.IsToggledOn()) {
+                UpperMenuBar.Instance.HistoryMenu.Click();
+                UpperMenuBar.Instance.ViewMenu.Click();
+            }
+
+            Assert.IsTrue(UpperMenuBar.Instance.HistoryMenu.IsToggledOn());
+        }
+
+        [TestMethod]
+        public void TurnOffHistoryTest()
+        {
+            UpperMenuBar.Instance.ViewMenu.Click();
+            if (UpperMenuBar.Instance.HistoryMenu.IsToggledOn())
+            {
+                UpperMenuBar.Instance.HistoryMenu.Click();
+                UpperMenuBar.Instance.ViewMenu.Click();
+            }
+
+            Assert.IsFalse(UpperMenuBar.Instance.HistoryMenu.IsToggledOn());
         }
         //TODO: read abot CustomUI items. create toggle menu item
 
-        private bool IsElementToggledOn(AutomationElement element)
-        {
-            if (element == null)
-            {
-                return false;
-            }
-
-            Object objPattern;
-            TogglePattern togPattern;
-            if (true == element.TryGetCurrentPattern(TogglePattern.Pattern, out objPattern))
-            {
-                togPattern = objPattern as TogglePattern;
-                return togPattern.Current.ToggleState == ToggleState.On;
-            }
-            return false;
-        }
+       
     }
 }
