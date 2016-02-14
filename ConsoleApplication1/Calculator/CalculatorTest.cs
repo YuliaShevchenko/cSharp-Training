@@ -10,13 +10,13 @@ namespace Calculator
         public TestContext TestContext { get; set; }
 
         [TestInitialize]
-        public void initialize()
+        public void Initialize()
         {
             CalculatorApplication.Instanse.Start();
         }
 
         [TestCleanup]
-        public void testCleanUp()
+        public void TestCleanUp()
         {
             CalculatorApplication.Instanse.Close();
         }
