@@ -64,11 +64,30 @@ namespace Calculator
             window = CalculatorApplication.Instanse.MainWindow;
         }
 
+        public bool IsHistoryMenuToggledOn()
+        {
+            ViewMenu.Click();
+            return HistoryMenu.IsToggledOn();
+        }
+
         public void TurnOnHistory()
         {
             ViewMenu.Click();
-           // HistoryMenu.Click();
-            HistoryMenu.EnterDate();
+            if (!HistoryMenu.IsToggledOn())
+            {
+                HistoryMenu.Click();
+            }
+            ViewMenu.Click();
+        }
+
+        public void TurnOffHistory()
+        {
+            ViewMenu.Click();
+            if (HistoryMenu.IsToggledOn())
+            {
+                HistoryMenu.Click();
+            }
+            ViewMenu.Click();
         }
 
         //Use this Menu BAr to open About modal window
