@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TestStack.White;
@@ -19,7 +20,7 @@ namespace Calculator
         {
             get
             {
-                return application.GetWindow("Калькулятор");
+                return application.GetWindow("Calculator");
             }
         }
 
@@ -56,16 +57,18 @@ namespace Calculator
         //    return (T)Activator.CreateInstance(typeof(T), myWindow);
         //}
 
-        //TODO: base on T.IsModal if..else
+            //todo: search using isModal and title
 
-
-        //TODO: set IsModal property (true/false in parametrs)
-        public T GetScreen<T>() where T : BaseScreen, new()
+        public T GetScreen<T>( Window window) where T : BaseScreen, new()
         {
+            //Type type = typeof(T);
+            //MethodInfo method = type.GetMethod("isModal", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+            //object obj = Activator.CreateInstance(type);
+
+           
+            
             return ScreenFactory.CreateScreen<T>(MainWindow);
+           
         }
-
-        //TODO: create property mainwindow to pass in params; to find  modal window from parent.
-
     }
 }

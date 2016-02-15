@@ -43,7 +43,9 @@ namespace Calculator
                 return true;
             }
         }
-       
+        //public static bool isModal() {
+        //    return true;
+        //}
 
         public AboutCalculatorModalScreen(Window window) : base(window)
         {           

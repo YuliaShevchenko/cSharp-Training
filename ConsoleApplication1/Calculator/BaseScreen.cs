@@ -11,7 +11,7 @@ namespace Calculator
     abstract class BaseScreen
     {
         protected Window window;
-        //TODO: create property IsModal, by default all created screens set this property to false in constructor
+        
         public abstract string ExpectedTitle { get; }
         public abstract bool IsModal { get; }
 
@@ -51,6 +51,15 @@ namespace Calculator
             window.Close();
         }
 
-
+        public static NAME ConvertdataToEnum(string title)
+        {
+            return (NAME)Enum.Parse(typeof(NAME), title, true);
+        }
     }
+
+    public enum NAME
+    {
+        ABOUT, STANDARD
+    }
+
 }
