@@ -15,6 +15,9 @@ namespace Calculator
         public abstract string ExpectedTitle { get; }
         public abstract bool IsModal { get; }
 
+        //todo: public enum Name { AboutCalc , Calculator}
+        // create enum for acreens
+
 
         public BaseScreen(Window window)
         {

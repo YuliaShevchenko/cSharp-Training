@@ -11,18 +11,18 @@ namespace Calculator
     {
         public static T CreateScreen<T>(Window window) where T : BaseScreen, new()
         {
-            BaseScreen t = new T();
-            bool isModalScreen = t.IsModal;
+            BaseScreen type = new T();
+            bool isModalScreen = type.IsModal;
             if (isModalScreen)
             {
-                Window modalWindow = window.ModalWindow(t.ExpectedTitle);
-                t.Init(modalWindow);
-                return (T)t;
+                Window modalWindow = window.ModalWindow(type.ExpectedTitle);
+                type.Init(modalWindow);
+                return (T)type;
             }
             else
             {
-                t.Init(window);
-                return (T)t;
+                type.Init(window);
+                return (T)type;
             }
         }
     }

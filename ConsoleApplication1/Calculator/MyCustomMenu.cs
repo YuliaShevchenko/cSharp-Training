@@ -24,7 +24,7 @@ namespace Calculator
         {
             //Base class, i.e. CustomUIItem has property called Container. Use this find the items within this.
             //Can also use SearchCriteria for find items
-            Console.WriteLine("ttttttttttt");
+           // Console.WriteLine("ttttttttttt");
         }
 
 
