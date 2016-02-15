@@ -14,7 +14,7 @@ namespace Calculator
 {
     class StandardViewScreen : BaseScreen
     {
-        public const string EXPECTEDTITLE = "Calculator";
+        public const string EXPECTEDTITLE = "Калькулятор";
 
         public Button EqualsButton
         {
@@ -95,12 +95,9 @@ namespace Calculator
                 return EXPECTEDTITLE;
             }
         }
-        public override bool IsModal
+        public static bool IsModal()
         {
-            get
-            {
                 return false;
-            }
         }
 
         public StandardViewScreen(Window window) : base(window)

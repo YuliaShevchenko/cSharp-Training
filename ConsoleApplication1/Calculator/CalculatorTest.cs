@@ -29,7 +29,7 @@ namespace Calculator
             string firstNumber, secondNumber, operation, expectedResult;
             GetDigitInDataFile(out firstNumber, out secondNumber, out operation, out expectedResult);
 
-            StandardViewScreen standardViewWindow = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>();
+            StandardViewScreen standardViewWindow = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
             standardViewWindow.GetDigitButton(firstNumber).Click();
             standardViewWindow.GetOperationButtons(operation).Click();
             standardViewWindow.GetDigitButton(secondNumber).Click();
@@ -44,7 +44,7 @@ namespace Calculator
         {
             string firstNumber, secondNumber, operation, expectedResult;
             GetDigitInDataFile(out firstNumber, out secondNumber, out operation, out expectedResult);
-            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>();
+            StandardViewScreen standardCalcScreen = CalculatorApplication.Instanse.GetScreen<StandardViewScreen>(StandardViewScreen.EXPECTEDTITLE);
             standardCalcScreen.GetDigitButton(firstNumber).Click();
             standardCalcScreen.GetOperationButtons(operation).Click();
             standardCalcScreen.GetDigitButton(secondNumber).Click();
@@ -64,7 +64,7 @@ namespace Calculator
         public void CheckVersionOnAboutWindowTest()
         {
             UpperMenuBar.Instance.ClickAboutCalculatorButton();
-            AboutCalculatorModalScreen aboutCalcModalScreen = CalculatorApplication.Instanse.GetScreen<AboutCalculatorModalScreen>();
+            AboutCalculatorModalScreen aboutCalcModalScreen = CalculatorApplication.Instanse.GetScreen<AboutCalculatorModalScreen>(AboutCalculatorModalScreen.EXPECTEDTITLE);
             Assert.AreEqual("Version 6.1 (Build 7601: Service Pack 1)", aboutCalcModalScreen.VersionLabel.Text);
             aboutCalcModalScreen.OkButton.Click();
         }

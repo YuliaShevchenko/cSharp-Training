@@ -11,9 +11,9 @@ namespace Calculator
     abstract class BaseScreen
     {
         protected Window window;
-        
+
         public abstract string ExpectedTitle { get; }
-        public abstract bool IsModal { get; }
+        // public abstract bool IsModal { get; }
 
         //todo: public enum Name { AboutCalc , Calculator}
         // create enum for acreens
@@ -24,7 +24,7 @@ namespace Calculator
             this.window = window;
             if (!getTitle().Equals(ExpectedTitle))
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Expected title: " + ExpectedTitle + " Current title: " + getTitle());
             }
         }
 
@@ -37,7 +37,7 @@ namespace Calculator
             this.window = window;
             if (!getTitle().Equals(ExpectedTitle))
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Expected title: " + ExpectedTitle + " Current title: " + getTitle());
             }
         }
 
@@ -53,7 +53,15 @@ namespace Calculator
 
         public static NAME ConvertdataToEnum(string title)
         {
-            return (NAME)Enum.Parse(typeof(NAME), title, true);
+            switch (title)
+            {
+                case AboutCalculatorModalScreen.EXPECTEDTITLE:
+                    return NAME.ABOUT;
+                case StandardViewScreen.EXPECTEDTITLE:
+                    return NAME.STANDARD;
+            }
+
+            throw new ArgumentException("Can not find enum for title: " + title);
         }
     }
 

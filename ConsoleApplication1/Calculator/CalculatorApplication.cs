@@ -20,7 +20,7 @@ namespace Calculator
         {
             get
             {
-                return application.GetWindow("Calculator");
+                return application.GetWindow("Калькулятор");
             }
         }
 
@@ -57,18 +57,29 @@ namespace Calculator
         //    return (T)Activator.CreateInstance(typeof(T), myWindow);
         //}
 
-            //todo: search using isModal and title
+        //todo: search using isModal and title
 
-        public T GetScreen<T>( Window window) where T : BaseScreen, new()
+        public T GetScreen<T>(String title) where T : BaseScreen, new()
         {
-            //Type type = typeof(T);
-            //MethodInfo method = type.GetMethod("isModal", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
-            //object obj = Activator.CreateInstance(type);
 
-           
-            
-            return ScreenFactory.CreateScreen<T>(MainWindow);
-           
+            Type type = typeof(T);
+
+            MethodInfo methodInfo = type.GetMethod("IsModal", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);
+
+            Object isModal = methodInfo.Invoke(null, null);
+
+            Window window = null;
+
+            if ((bool)isModal)
+            {
+                window = MainWindow.ModalWindow(title);
+            }
+            else
+            {
+                window = MainWindow;
+            }
+
+            return (T)ScreenFactory.CreateScreen(window, BaseScreen.ConvertdataToEnum(title));
         }
     }
 }

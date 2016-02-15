@@ -18,12 +18,9 @@ namespace Calculator
                 return EXPECTEDTITLE;
             }
         }
-        public override bool IsModal
+        public static bool IsModal()
         {
-            get
-            {
-                return false;
-            }
+            return false;
         }
 
         public SientificCalculatorScreen(Window window) : base(window)
