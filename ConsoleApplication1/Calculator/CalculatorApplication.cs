@@ -57,11 +57,8 @@ namespace Calculator
         //    return (T)Activator.CreateInstance(typeof(T), myWindow);
         //}
 
-        //todo: search using isModal and title
-
-        public T GetScreen<T>(String title) where T : BaseScreen, new()
+        public T GetScreen<T>(String title) where T : BaseScreen
         {
-
             Type type = typeof(T);
 
             MethodInfo methodInfo = type.GetMethod("IsModal", BindingFlags.Static | BindingFlags.Public | BindingFlags.FlattenHierarchy);

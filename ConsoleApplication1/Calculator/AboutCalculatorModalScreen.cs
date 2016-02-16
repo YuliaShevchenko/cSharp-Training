@@ -12,7 +12,7 @@ namespace Calculator
 {
     class AboutCalculatorModalScreen : BaseScreen
     {
-        public const string EXPECTEDTITLE = "О программе";
+        public const string EXPECTEDTITLE = "About Calculator";
 
         public Button OkButton
         {
@@ -36,13 +36,7 @@ namespace Calculator
                 return EXPECTEDTITLE;
             }
         }
-      //  public override bool IsModal
-        //{
-        //    get
-        //    {
-        //        return true;
-        //    }
-        //}
+      
         public static bool IsModal()
         {
             return true;
@@ -51,10 +45,5 @@ namespace Calculator
         public AboutCalculatorModalScreen(Window window) : base(window)
         {           
         }
-
-        public AboutCalculatorModalScreen() : base()
-        {
-        }
-
     }
 }

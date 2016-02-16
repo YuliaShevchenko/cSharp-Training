@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TestStack.White.UIItems.WindowItems;
-using TestStack.White;
+using System.ComponentModel;
+
 
 namespace Calculator
 {
@@ -13,26 +10,8 @@ namespace Calculator
         protected Window window;
 
         public abstract string ExpectedTitle { get; }
-        // public abstract bool IsModal { get; }
-
-        //todo: public enum Name { AboutCalc , Calculator}
-        // create enum for acreens
-
 
         public BaseScreen(Window window)
-        {
-            this.window = window;
-            if (!getTitle().Equals(ExpectedTitle))
-            {
-                throw new InvalidOperationException("Expected title: " + ExpectedTitle + " Current title: " + getTitle());
-            }
-        }
-
-        public BaseScreen()
-        {
-        }
-
-        public void Init(Window window)
         {
             this.window = window;
             if (!getTitle().Equals(ExpectedTitle))
@@ -59,12 +38,12 @@ namespace Calculator
                     return NAME.ABOUT;
                 case StandardViewScreen.EXPECTEDTITLE:
                     return NAME.STANDARD;
+                default:
+                    throw new InvalidEnumArgumentException("Can not find enum with such title: " + title);          
             }
-
-            throw new ArgumentException("Can not find enum for title: " + title);
         }
     }
-
+    //todo: in other class
     public enum NAME
     {
         ABOUT, STANDARD

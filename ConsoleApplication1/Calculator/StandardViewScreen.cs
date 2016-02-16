@@ -14,7 +14,7 @@ namespace Calculator
 {
     class StandardViewScreen : BaseScreen
     {
-        public const string EXPECTEDTITLE = "Калькулятор";
+        public const string EXPECTEDTITLE = "Calculator";
 
         public Button EqualsButton
         {
@@ -101,10 +101,6 @@ namespace Calculator
         }
 
         public StandardViewScreen(Window window) : base(window)
-        {
-        }
-
-        public StandardViewScreen() : base()
         {
         }
 

@@ -58,7 +58,6 @@ namespace Calculator
             }
         }
 
-
         private UpperMenuBar()
         {
             window = CalculatorApplication.Instanse.MainWindow;
@@ -90,7 +89,6 @@ namespace Calculator
             ViewMenu.Click();
         }
 
-        //Use this Menu BAr to open About modal window
         public void ClickAboutCalculatorButton()
         {
             HelpMenu.Click();
