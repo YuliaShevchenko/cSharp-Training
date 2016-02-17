@@ -1,17 +1,17 @@
 ﻿using System;
 using TestStack.White.UIItems.WindowItems;
 using System.ComponentModel;
+using TestStack.White.ScreenObjects;
 
-
-namespace Calculator
+namespace CalculatorTest
 {
-    abstract class BaseScreen
+    abstract class BaseScreen : AppScreen
     {
         protected Window window;
 
         public abstract string ExpectedTitle { get; }
 
-        public BaseScreen(Window window)
+        public BaseScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {
             this.window = window;
             if (!getTitle().Equals(ExpectedTitle))
@@ -36,7 +36,7 @@ namespace Calculator
             {
                 case AboutCalculatorModalScreen.EXPECTEDTITLE:
                     return NAME.ABOUT;
-                case StandardViewScreen.EXPECTEDTITLE:
+                case StandardViewScreenRep.EXPECTEDTITLE:
                     return NAME.STANDARD;
                 default:
                     throw new InvalidEnumArgumentException("Can not find enum with such title: " + title);          
