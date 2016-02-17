@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using TestStack.White;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.UIItems.WindowStripControls;
@@ -43,7 +44,7 @@ namespace CalculatorTest
 
         public void Start()
         {
-           Application.Launch(PATH);
+           application = Application.Launch(PATH);
         }
 
         public void Close()
@@ -76,7 +77,9 @@ namespace CalculatorTest
                 window = MainWindow;
             }
 
-            return (T)ScreenFactory.CreateScreen(window, BaseScreen.ConvertdataToEnum(title));
+            ScreenRepository screenRepository = new ScreenRepository(application.ApplicationSession);
+           
+            return (T)ScreenFactory.CreateScreen(window, BaseScreen.ConvertdataToEnum(title), screenRepository);
         }
     }
 }

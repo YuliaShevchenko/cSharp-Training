@@ -7,31 +7,31 @@ using System.Windows.Automation;
 using TestStack.White.UIItems.Actions;
 using TestStack.White.UIItems.Custom;
 
-namespace Calculator
+namespace CalculatorTest
 {
     [ControlTypeMapping(CustomUIItemType.MenuItem)]
     public class MyCustomMenu : CustomUIItem
     {
 
-        public MyCustomMenu(AutomationElement automationElement, ActionListener actionListener)
-            : base(automationElement, actionListener)
-        {
-        }
+        //public MyCustomMenu(AutomationElement automationElement, ActionListener actionListener)
+        //    : base(automationElement, actionListener)
+        //{
+        //}
 
-        public MyCustomMenu() { }
+        //public MyCustomMenu() { }
 
-        public virtual bool IsToggledOn()
-        {
-            var element = this.AutomationElement;
+        //public virtual bool IsToggledOn()
+        //{
+        //    var element = this.AutomationElement;
 
-            Object objPattern;
-            if (true == element.TryGetCurrentPattern(TogglePattern.Pattern, out objPattern))
-            {
-                return ((TogglePattern)objPattern).Current.ToggleState == ToggleState.On;
-            }
+        //    Object objPattern;
+        //    if (true == element.TryGetCurrentPattern(TogglePattern.Pattern, out objPattern))
+        //    {
+        //        return ((TogglePattern)objPattern).Current.ToggleState == ToggleState.On;
+        //    }
 
-            return false;
-        }
+        //    return false;
+        //}
 
     }
 }

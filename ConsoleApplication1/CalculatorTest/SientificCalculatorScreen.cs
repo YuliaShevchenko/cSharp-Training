@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems.WindowItems;
 
-namespace Calculator
+namespace CalculatorTest
 {
     class SientificCalculatorScreen : BaseScreen
     {
@@ -23,7 +24,7 @@ namespace Calculator
             return false;
         }
 
-        public SientificCalculatorScreen(Window window) : base(window)
+        public SientificCalculatorScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {
 
         }

@@ -10,41 +10,41 @@ using TestStack.White.ScreenObjects.ScreenAttributes;
 
 namespace CalculatorTest
 {
-    public  class StandardViewScreenRep
+    public class StandardViewScreenRep:BaseScreen
     {
         public const string EXPECTEDTITLE = "Calculator";
 
         [AutomationId("121")]
-        protected Button EqualsButton;
+        public Button EqualsButton;
 
         [AutomationId("158")]
-        protected Label DisplayLabel;
+        public Label DisplayLabel;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.AutomationId("93")]
+        [AutomationId("93")]
         protected Button PlusButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.AutomationId("94")]
+        [AutomationId("94")]
         protected Button MinusButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.AutomationId("92")]
+        [AutomationId("92")]
         protected Button MultiplyButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.AutomationId("91")]
+        [AutomationId("91")]
         protected Button DevideButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.AutomationId("1")]
+        [AutomationId("1")]
         protected Button OneButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.TextAttribute("2")]
+        [Text("2")]
         protected Button TwoButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.TextAttribute("3")]
+        [Text("3")]
         protected Button ThreeButton;
 
-        [TestStack.White.ScreenObjects.ScreenAttributes.TextAttribute("0")]
+        [Text("0")]
         protected Button ZeroButton;
 
-        public StandardViewScreenRep(Window window) { }
+       // public StandardViewScreenRep(Window window) { }
 
         public StandardViewScreenRep(Window window, ScreenRepository screenRepository) : base(window, screenRepository) { }
 

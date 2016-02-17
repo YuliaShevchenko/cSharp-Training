@@ -10,7 +10,7 @@ using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.MenuItems;
 using TestStack.White.UIItems.WindowItems;
 
-namespace Calculator
+namespace CalculatorTest
 {
  
     class UpperMenuBar 
@@ -63,31 +63,31 @@ namespace Calculator
             window = CalculatorApplication.Instanse.MainWindow;
         }
 
-        public bool IsHistoryMenuToggledOn()
-        {
-            ViewMenu.Click();
-            return HistoryMenu.IsToggledOn();
-        }
+        //public bool IsHistoryMenuToggledOn()
+        //{
+        //    ViewMenu.Click();
+        //    return HistoryMenu.IsToggledOn();
+        //}
 
-        public void TurnOnHistory()
-        {
-            ViewMenu.Click();
-            if (!HistoryMenu.IsToggledOn())
-            {
-                HistoryMenu.Click();
-            }
-            ViewMenu.Click();
-        }
+        //public void TurnOnHistory()
+        //{
+        //    ViewMenu.Click();
+        //    if (!HistoryMenu.IsToggledOn())
+        //    {
+        //        HistoryMenu.Click();
+        //    }
+        //    ViewMenu.Click();
+        //}
 
-        public void TurnOffHistory()
-        {
-            ViewMenu.Click();
-            if (HistoryMenu.IsToggledOn())
-            {
-                HistoryMenu.Click();
-            }
-            ViewMenu.Click();
-        }
+        //public void TurnOffHistory()
+        //{
+        //    ViewMenu.Click();
+        //    if (HistoryMenu.IsToggledOn())
+        //    {
+        //        HistoryMenu.Click();
+        //    }
+        //    ViewMenu.Click();
+        //}
 
         public void ClickAboutCalculatorButton()
         {

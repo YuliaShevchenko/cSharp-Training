@@ -5,7 +5,7 @@ using TestStack.White.ScreenObjects;
 
 namespace CalculatorTest
 {
-    abstract class BaseScreen : AppScreen
+    public abstract class BaseScreen : AppScreen
     {
         protected Window window;
 

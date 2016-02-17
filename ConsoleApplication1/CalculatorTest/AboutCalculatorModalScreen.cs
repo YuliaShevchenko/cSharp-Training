@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TestStack.White;
+using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
@@ -42,7 +43,7 @@ namespace CalculatorTest
             return true;
         }
 
-        public AboutCalculatorModalScreen(Window window) : base(window)
+        public AboutCalculatorModalScreen(Window window, ScreenRepository screenRepository) : base(window, screenRepository)
         {           
         }
     }
