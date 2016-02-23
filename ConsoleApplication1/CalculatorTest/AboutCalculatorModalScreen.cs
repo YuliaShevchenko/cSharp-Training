@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TestStack.White;
 using TestStack.White.ScreenObjects;
+using TestStack.White.ScreenObjects.ScreenAttributes;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
@@ -15,20 +16,11 @@ namespace CalculatorTest
     {
         public const string EXPECTEDTITLE = "About Calculator";
 
-        public Button OkButton
-        {
-            get
-            {
-                return window.Get<Button>(SearchCriteria.ByAutomationId("1"));
-            }
-        }
-        public Label VersionLabel
-        {
-            get
-            {
-                return window.Get<Label>(SearchCriteria.ByAutomationId("13579"));
-            }
-        }
+        [AutomationId("1")]
+        public Button OkButton;
+
+        [AutomationId("13579")]
+        public Label VersionLabel;
 
         public override string ExpectedTitle
         {

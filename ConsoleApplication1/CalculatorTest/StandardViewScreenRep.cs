@@ -7,6 +7,7 @@ using TestStack.White.ScreenObjects;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
 using TestStack.White.ScreenObjects.ScreenAttributes;
+using TestStack.White.UIItems.Finders;
 
 namespace CalculatorTest
 {
@@ -32,7 +33,7 @@ namespace CalculatorTest
         [AutomationId("91")]
         protected Button DevideButton;
 
-        [AutomationId("1")]
+        [Text("1")]
         protected Button OneButton;
 
         [Text("2")]
@@ -44,7 +45,7 @@ namespace CalculatorTest
         [Text("0")]
         protected Button ZeroButton;
 
-       // public StandardViewScreenRep(Window window) { }
+       //public StandardViewScreenRep() : base(Window window, ScreenRepository screenRepository) { }
 
         public StandardViewScreenRep(Window window, ScreenRepository screenRepository) : base(window, screenRepository) { }
 
@@ -60,7 +61,7 @@ namespace CalculatorTest
             return false;
         }
 
-        public Button GetDigitButton(string number)
+        public virtual Button GetDigitButton(string number)
         {
             switch (number)
             {
@@ -76,12 +77,12 @@ namespace CalculatorTest
             return null;
         }
 
-        public OPERATION ConvertOperationToEnum(string operation)
+        public virtual OPERATION ConvertOperationToEnum(string operation)
         {
             return (OPERATION)Enum.Parse(typeof(OPERATION), operation, true);
         }
 
-        public Button GetOperationButtons(string operation)
+        public virtual  Button GetOperationButtons(string operation)
         {
             switch (ConvertOperationToEnum(operation))
             {

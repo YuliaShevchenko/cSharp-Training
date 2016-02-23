@@ -16,12 +16,12 @@ namespace CalculatorTest
     {
         private const string PATH = "calc.exe";
 
-        public Application application { get; }
+        public Application application { get; set; }
         public Window MainWindow
         {
             get
             {
-                return application.GetWindow("Калькулятор");
+                return application.GetWindow("Calculator");
             }
         }
 
@@ -58,7 +58,7 @@ namespace CalculatorTest
         //    return (T)Activator.CreateInstance(typeof(T), myWindow);
         //}
 
-        public T GetScreen<T>(String title) where T : BaseScreen
+        public T GetScreen<T>(String title, ScreenRepository screenRepository) where T : BaseScreen
         {
             Type type = typeof(T);
 
@@ -77,7 +77,7 @@ namespace CalculatorTest
                 window = MainWindow;
             }
 
-            ScreenRepository screenRepository = new ScreenRepository(application.ApplicationSession);
+          // ScreenRepository screenRepository = new ScreenRepository(application.ApplicationSession);
            
             return (T)ScreenFactory.CreateScreen(window, BaseScreen.ConvertdataToEnum(title), screenRepository);
         }
