@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -11,7 +12,7 @@ namespace Selenium
 {
     class Container
     {
-        //IWebDriver driver;
+        IWebDriver driver;
 
         [FindsBy(How = How.XPath, Using = "//*[@id='menu-item-33']/a")]
         public IWebElement ProductsTab;
@@ -25,13 +26,15 @@ namespace Selenium
 
         public Container(IWebDriver driver)
         {
+            this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
 
         public void SelectProductCategory() {
-            //ProductsTab.Click();
+           Actions action = new Actions(driver);
+            action.MoveToElement(ProductsTab).Perform();
             
-           // AccessoriesMenuItem.Click();
+           AccessoriesMenuItem.Click();
           
 
             

@@ -1,6 +1,5 @@
 ﻿using System;
 using NUnit.Framework;
-using NUnit.Framework;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium;
 
