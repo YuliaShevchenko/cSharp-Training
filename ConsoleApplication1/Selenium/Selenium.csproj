@@ -80,8 +80,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Cart.cs" />
     <Compile Include="Container.cs" />
     <Compile Include="Login.cs" />
+    <Compile Include="Pop-up.cs" />
     <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Header.cs" />

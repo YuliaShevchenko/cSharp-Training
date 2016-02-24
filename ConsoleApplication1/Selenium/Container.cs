@@ -12,16 +12,21 @@ namespace Selenium
 {
     class Container
     {
+
         IWebDriver driver;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='menu-item-33']/a")]
-        public IWebElement ProductsTab;
+        [FindsBy(How = How.XPath, Using = ".//*[@id='content']//header/h1")]
+        public IWebElement pageHeader;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='menu-item-34']/a")]
-        public IWebElement AccessoriesMenuItem;
+        [FindsBy(How = How.XPath, Using = ".//*[@id='default_products_page_container']")]
+        public IWebElement product;
 
-        [FindsBy(How = How.XPath, Using = "//*[@id='menu-item-35']/a")]
-        public IWebElement iMacs;
+        [FindsBy(How = How.XPath, Using = ".//*[@class='input-button-buy']/span/input")]
+        public IWebElement addToCartButton;
+
+
+
+
 
 
         public Container(IWebDriver driver)
@@ -30,15 +35,18 @@ namespace Selenium
             PageFactory.InitElements(driver, this);
         }
 
-        public void SelectProductCategory() {
-           Actions action = new Actions(driver);
-            action.MoveToElement(ProductsTab).Perform();
-            
-           AccessoriesMenuItem.Click();
-          
-
-            
+        public String SelectAProduct(int index)
+        {
+            var product = driver.FindElements(By.XPath(".//*[@class='product_grid_display group']")).ElementAt(index);
+           
+            return product.Text;
         }
 
+        public void ClickOnCartButton(int index)
+        {
+             driver.FindElements(By.XPath(".//*[@class='input-button-buy']/span/input")).ElementAt(index).Click();
+            
+        }
     }
+
 }

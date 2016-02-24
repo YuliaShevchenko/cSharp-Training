@@ -11,7 +11,6 @@ namespace Selenium
 {
     class Login
     {
-        //IWebDriver driver;
 
         [FindsBy(How = How.Id, Using = "log")]
         private IWebElement userNameField;
@@ -26,8 +25,6 @@ namespace Selenium
         public Login(IWebDriver driver)
         {
             PageFactory.InitElements(driver, this);
-            //if (driver.Title != "ONLINE STORE | Toolsqa Dummy Test site ")
-            //    throw new NoSuchWindowException("This is not the Login page");
         }
 
         public void SetUserName(String userName) {

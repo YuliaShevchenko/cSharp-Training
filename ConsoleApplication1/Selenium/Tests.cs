@@ -10,6 +10,8 @@ namespace Selenium
     {
         IWebDriver driver;
 
+        public object IWebDriverWait { get; private set; }
+
         [SetUp]
         public void Init()
         { 
@@ -30,13 +32,47 @@ namespace Selenium
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(10));
             Assert.AreEqual("Howdy, Qa29", header.GetHomePageUserName());
         }
+
         [Test]
         public void SelectCategoryTest()
         {
-            Container content = new Container(driver);
-            content.SelectProductCategory();
+            string productCategory = "iMacs";
+            Header header = new Header(driver);
+            header.SelectProductCategory(productCategory);
+            Container conentContainer = new Container(driver);
+            Assert.AreEqual(productCategory, conentContainer.pageHeader.Text);
+            
+            //todo: verify view
 
         }
+
+        [Test]
+        public void AddProductToCart()
+        {
+            string productCategory = "iPads";
+            Header header = new Header(driver);
+            header.SelectProductCategory(productCategory);
+            Container conentContainer = new Container(driver);
+            string title = conentContainer.SelectAProduct(0);
+            conentContainer.ClickOnCartButton(1);
+            Pop_up pop = new Pop_up(driver);
+            pop.continueShoppingButton.Click();
+            header.GotoCart();
+
+            Cart cart = new Cart(driver);
+            Assert.AreEqual(title, cart.productInCart.Text);
+        }
+
+        [Test]
+        public void Search()
+        {
+            Header header = new Header(driver);
+            header.searchField.SendKeys("Apple TV");
+            header.searchField.Submit();
+
+
+        }
+
 
 
         [TearDown]
