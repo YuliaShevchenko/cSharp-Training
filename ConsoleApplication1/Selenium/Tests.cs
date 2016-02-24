@@ -70,9 +70,7 @@ namespace Selenium
             header.searchField.SendKeys("Apple TV");
             header.searchField.Submit();
 
-
         }
-
 
 
         [TearDown]
